@@ -1,7 +1,21 @@
 .cardissue-wrapper {
     border-radius: 20px 20px 20px 0px;
+    width: 95px;
 }
 
+.cardissue-body {
+    height: 50px;
+    margin: -15px 0 5px 0;
+}
 .cardissue-title {
     padding: 5px;
+    border-radius: 20px 20px 0px 0px;
+    color: white;
+}
+
+.cardissue-footer, a:link, a:active, a:visited {
+    padding: 5px;
+    font-size: small;
+    border-radius: 0px 0px 20px 0px;
+    color: white;
 }

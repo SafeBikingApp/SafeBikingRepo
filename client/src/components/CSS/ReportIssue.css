@@ -1,0 +1,17 @@
+.reportissue-section-container {
+    margin: 5px;
+    color: black;
+    text-align: left;
+}
+
+.reportissue-title {
+    padding: 5px;
+    margin: 0 0 3px 0;
+    text-align: left;
+}
+
+.reportissue-detail {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+}

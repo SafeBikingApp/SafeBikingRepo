@@ -1,3 +1,7 @@
-.cardreportissue-wrapper {
+.cardreportissue-wrapper, a:link, a:active, a:visited {
     border-radius: 20px 20px 20px 0px;
+    width: 95px;
+    padding: 5px 5px 7px 5px;
+    font-size: small;
+    color: white;
 }
