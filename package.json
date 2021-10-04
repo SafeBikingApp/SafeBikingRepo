@@ -1,0 +1,20 @@
+{
+  "name": "Habitat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SafeBikingApp/SafeBikingRepo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SafeBikingApp/SafeBikingRepo/issues"
+  },
+  "homepage": "https://github.com/SafeBikingApp/SafeBikingRepo#readme"
+}
