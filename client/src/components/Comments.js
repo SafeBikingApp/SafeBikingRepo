@@ -5,7 +5,7 @@ function Comments() {
 
     return (
         <div className="comments-wrapper">
-
+            comments comments comments comments comments
         </div>
     )
 };

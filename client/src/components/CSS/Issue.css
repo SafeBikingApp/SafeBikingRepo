@@ -1,0 +1,45 @@
+.issue-wrapper {
+    color: white;
+}
+
+.issue-title {
+    border-radius: 0px 0px 5px 5px;
+    padding: 5px;
+    margin: 0 0 3px 0;
+    text-align: left;
+}
+
+.issue-section-container {
+    margin: 5px;
+    color: black;
+    text-align: left;
+}
+
+.issue-center {
+    display: flex;
+    justify-content: center;
+    font-size: small;
+}
+
+.issue-section {
+
+}
+
+.issue-img {
+    height: 70%;
+    width: auto;
+    margin: 10px;
+}
+
+.issue-modify-show {
+    display: block;
+}
+
+.issue-modify-hide {
+    display: none;
+}
+
+.issue-votes { 
+    border-radius: 5px;
+    padding: 5px;
+}
