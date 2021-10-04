@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-// import "./CSS/Votes.css";
+import "./CSS/Votes.css";
 
 function Votes(props) {
 

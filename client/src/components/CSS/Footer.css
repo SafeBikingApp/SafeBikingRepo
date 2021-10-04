@@ -1,0 +1,11 @@
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    /* width: 100vw; */
+    padding: 10px;
+}
+
+.footer-section {
+    margin: 0 10px 0 10px;
+    font-size: small;
+}
