@@ -15,10 +15,12 @@ const IssueSchema = new mongoose.Schema({
     {
       user_id: { type: mongoose.SchemaTypes.ObjectId, required: true },
       message: { type: String, required: true },
+      date: { type: Date },
     },
   ],
   upVotes: [{ type: mongoose.SchemaTypes.ObjectId }],
   downVotes: [{ type: mongoose.SchemaTypes.ObjectId }],
+  reportedOn: { type: Date },
   pictures: [{ type: String }],
 });
 

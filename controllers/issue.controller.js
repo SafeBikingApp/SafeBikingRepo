@@ -13,6 +13,7 @@ const createNew = async (req, res) => {
       comments,
       upVotes,
       downVotes,
+      reportedOn: Date.now(),
       pictures,
     });
     console.log(req.body);
@@ -34,21 +35,22 @@ const findAll = async (req, res) => {
   }
 };
 
-const findIssue = async (req, res) => {
-  //   const { id } = req.params;
-  try {
-    const foundIssue = await IssueModel.findById({ _id: id });
-    if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
-    res.json(foundIssue);
-  } catch (error) {
-    console.log(error);
-    if (error === "ISSUE_NOT_FOUND") {
-      res.status(403).json({ message: "Sorry we couldn't find this issue" });
-    } else {
-      res.status(500).json({ message: "Sorry something went wrong" });
-    }
-  }
-};
+// const findIssue = async (req, res, next) => {
+//     const { id } = req.params;
+//   try {
+//     const foundIssue = await IssueModel.findById({ _id: id });
+//     if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
+//     res.json(foundIssue);
+//   } catch (error) {
+//     console.log(error);
+//     if (error === "ISSUE_NOT_FOUND") {
+//       res.status(403).json({ message: "Sorry we couldn't find this issue" });
+//     } else {
+//       res.status(500).json({ message: "Sorry something went wrong" });
+//     }
+//   }
+
+// };
 
 const allComments = async (req, res) => {
   const { id } = req.params;
@@ -67,24 +69,32 @@ const allComments = async (req, res) => {
 };
 
 const newComment = async (req, res) => {
-  const { id } = req.params;
+  const { id: issue_id } = req.params;
   const { user_id, message } = req.body;
-  console.log(id);
+  console.log(issue_id);
   try {
-    const foundIssue = await IssueModel.findByIdAndUpdate(
-      id,
-      { $push: { comments: req.body } },
+    //   adding comment to the issue document
+    const updatedIssue = await IssueModel.findByIdAndUpdate(
+      issue_id,
+      { $push: { comments: { user_id, message, date: Date.now() } } },
       { new: true }
     );
-    if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
+    if (!updatedIssue) await Promise.reject("ISSUE_NOT_FOUND");
 
-    const updatedUser = UserModel.findByIdAndUpdate(
+    // adding comment to the user profile
+    const updatedUser = await UserModel.findByIdAndUpdate(
       { _id: user_id },
-      { $push: { comments: req.body } },
+      {
+        $push: {
+          comments: { issue_id, message, date: Date.now() },
+        },
+      },
       { new: true }
     );
-    console.log(updatedUser);
-    res.json(foundIssue);
+
+    // if (!updatedUser)await Promise.reject("USER_NOT_FOUND")
+
+    res.json({ message: "new message added succesfully" });
   } catch (error) {
     console.log(error);
     if (error === "ISSUE_NOT_FOUND") {
@@ -94,5 +104,60 @@ const newComment = async (req, res) => {
     }
   }
 };
+// vote param upvote || downvote
+const vote = async (req, res) => {
+  const { id: issue_id, vote } = req.params;
+  const { user_id } = req.body;
+  console.log(req.user);
+  try {
+    const foundIssue = await IssueModel.findById(issue_id);
+    if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
 
-module.exports = { createNew, findAll, allComments, newComment };
+    // check if user has already up or down voted this issue
+    const alreadyUpVoted = foundIssue.upVotes.includes(user_id);
+    const alreadyDownVoted = foundIssue.downVotes.includes(user_id);
+
+    if (vote === "upVote") {
+      if (alreadyUpVoted) await Promise.reject("ISSUE_ALREADY_UPVOTED");
+      //   add user_id to the upVotes array
+      const updatedVote = await IssueModel.findByIdAndUpdate(issue_id, {
+        $push: { upVotes: user_id },
+      });
+      //  if this issue was downvoted before, his user_id will be removed from the downVotes array
+      if (alreadyDownVoted) {
+        await IssueModel.findByIdAndUpdate(issue_id, {
+          $pull: { downVotes: user_id },
+        });
+      }
+      res.json({ message: "Upvote succesful" });
+    }
+
+    if (vote === "downVote") {
+      if (alreadyDownVoted) await Promise.reject("ISSUE_ALREADY_DOWNVOTED");
+      //   add user_id to the downVotes array
+      const updatedVote = await IssueModel.findByIdAndUpdate(issue_id, {
+        $push: { downVotes: user_id },
+      });
+      //   if this issue was upvoted before, his user_id will be removed from the upVotes array
+      if (alreadyUpVoted) {
+        await IssueModel.findByIdAndUpdate(issue_id, {
+          $pull: { upVotes: user_id },
+        });
+      }
+      res.json({ message: "Downvote succesful" });
+    }
+  } catch (error) {
+    console.log(error);
+    if (error === "ISSUE_ALREADY_UPVOTED") {
+      res.status(403).json({ message: "User has already upvoted this issue" });
+    } else if (error === "ISSUE_ALREADY_DOWNVOTED") {
+      res
+        .status(403)
+        .json({ message: "User has already downvoted this issue" });
+    } else {
+      res.status(500).json({ message: "Sorry something went wrong" });
+    }
+  }
+};
+
+module.exports = { createNew, findAll, allComments, newComment, vote };

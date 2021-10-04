@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     {
       issue_id: { type: mongoose.SchemaTypes.ObjectId },
       message: { type: String },
+      date: { type: Date },
     },
   ],
 });
