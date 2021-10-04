@@ -2,6 +2,26 @@
   text-align: center;
 }
 
+* {
+  text-decoration: none;
+}
+
+.light-color-bg { 
+  background-color: #DBD3F3;
+}
+
+.light-color-text { 
+  color: #DBD3F3;
+}
+
+.dark-color-bg { 
+  background-color: #3E2195;
+}
+
+.dark-color-text { 
+  color: #3E2195;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
