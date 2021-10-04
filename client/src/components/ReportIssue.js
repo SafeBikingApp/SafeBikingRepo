@@ -17,11 +17,13 @@ function ReportIssue() {
                 <div className="reportissue-title">
                     Issue:
                 </div>
-                <div className="">
+                <div className="reportissue-detail">
                     <Button className="" component="" handleClick={handleClick} name="OBSTRUCTION" />
                     <Button component="" handleClick={handleClick} name="POTHOLE" />
+                <div className="reportissue-detail">
                     <Button component="" handleClick={handleClick} name="ACCIDENT" />
                     <Button component="" handleClick={handleClick} name="TRAFFIC DANGER" />
+                </div>
                 </div>
             </div>
         </div>

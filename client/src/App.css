@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+a:link, a:active, a:visited {
+   color: white;
+}
+
 * {
   text-decoration: none;
 }
