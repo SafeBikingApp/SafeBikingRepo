@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import "./CSS/Header.css";
 import Title from "./Title";
 import Button from "./Button";
-import CardReportIssue from "./CardReportIssue";
 
 function ReportIssue() {
 
