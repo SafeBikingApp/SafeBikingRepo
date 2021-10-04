@@ -17,9 +17,9 @@ function App() {
             <div>
               <Header />
                 <Switch>
-                    <Route exact path="/issue" component={Map}/>
-                    <Route exact path="/" component={Issue} />
-                    <Route exact path="/report_issue" component={ReportIssue} />
+                    <Route exact path="/report_issue" component={Map}/>
+                    <Route exact path="/issue" component={Issue} />
+                    <Route exact path="/" component={ReportIssue} />
                     <Route exact path="/user_interface" component={UserInterface} />
                     <Route exact path="/user_login" component={UserLogin} />
                     <Route exact path="/user_register" component={UserRegister} />

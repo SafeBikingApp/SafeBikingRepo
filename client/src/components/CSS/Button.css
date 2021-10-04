@@ -1,0 +1,12 @@
+.button {
+    border-radius: 50px;
+    padding: 8px 10px 8px 10px;
+    color: white;
+    border: 0;
+    font-size: 10px;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+.button:hover, button:active {
+    filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.25));
+}

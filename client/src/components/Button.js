@@ -6,7 +6,7 @@ function Button(props) {
 
     return (
         <div className="button-wrapper">
-            <Link to={props.component}><button className="button dark-color-bg" onClick={props.handleClick} value={props.name} /></Link>
+            <Link to={props.component}><button className="button dark-color-bg" onClick={props.handleClick} value={props.value}>{props.name}</button></Link>
         </div>
     )
 };
