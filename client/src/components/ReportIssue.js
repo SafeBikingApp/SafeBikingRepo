@@ -11,6 +11,9 @@ function ReportIssue() {
     const handleClickPhoto = (e) => {
         
     };
+    const handleClickReport = (e) => {
+
+    };
     const [issue, setIssue] = useState("")
     const [agree, setAgree] = useState(false);
     const [photo, setPhoto] = useState(true);
@@ -47,7 +50,7 @@ function ReportIssue() {
                 <div className="reportissue-detail reportissue-left-input">
                     <input className="reportissue-input" placeholder="optional" type="text" />
                     &nbsp;&nbsp;&nbsp;
-                    <Button name="UPLOAD" onClick={handleClickPhoto} />
+                    <Button name="UPLOAD" handleClick={handleClickPhoto} />
                 </div>
                 <div className={photo ? "reportissue-detail reportissue-center reportissue-small" : "reportissue-detail hide-photo"}>
                     <img src={imgUrl} alt="Evidence" className="reportissue-photo light-color-bg" />
@@ -59,7 +62,7 @@ function ReportIssue() {
                     <input type="checkbox" className="reportissue-checkbox" onClick={setAgree} />I agree to the terms of service.
                 </div>
                 <div className="reportissue-center">
-                    <Button name="REPORT" component="" onClick={handleClick} />
+                    <Button name="REPORT" component="" handleClick={handleClickReport} />
                 </div>
             </div>
         </div>
