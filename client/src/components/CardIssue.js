@@ -4,8 +4,7 @@ import "./CSS/CardIssue.css";
 function CardIssue() {
 
     return (
-        <div className="cardissue-wrapper">
-
+        <div className="cardissue-wrapper dark-color-bg">
         </div>
     )
 };
