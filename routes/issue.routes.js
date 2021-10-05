@@ -7,6 +7,8 @@ IssueRouter.get("/", Issue.findAll);
 IssueRouter.post("/create", Issue.createNew);
 // get all the comment of a given issue - /:id = issue_id
 IssueRouter.get("/:id/comments", Issue.allComments);
+// get a single issue by id
+IssueRouter.get("/:id",Issue.findIssue)
 // add new comment inside a given issue - /:id = issue_id
 IssueRouter.post("/:id/comments/new", Issue.newComment);
 // vote an issue id: issue_id - :vote kewords [upVote,downVote]
