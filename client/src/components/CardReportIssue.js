@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import "./CSS/CardReportIssue.css";
+import "./CSS/CardReportissue.css";
 
 function CardReportIssue(props) {
 
