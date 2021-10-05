@@ -1,3 +1,21 @@
 .votes-wrapper { 
     padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.votes-thumb {
+    color: orange;
+    filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.555));
+    padding: 5px;
+}
+
+.votes-thumb:hover,  .votes-thumb:active {
+    color: rgb(255, 188, 62);
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.555));
+}
+
+.votes-number, .votes-number:hover, .votes-number:active {
+    font-size: 17px;
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
 }

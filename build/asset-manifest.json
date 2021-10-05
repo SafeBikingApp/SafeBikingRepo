@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.d304a22a.chunk.css",
     "main.js": "/static/js/main.a81304c7.chunk.js",
     "main.js.map": "/static/js/main.a81304c7.chunk.js.map",
@@ -16,5 +17,27 @@
     "static/js/2.105c0eb9.chunk.js",
     "static/css/main.d304a22a.chunk.css",
     "static/js/main.a81304c7.chunk.js"
+=======
+    "main.css": "/static/css/main.e1735a30.chunk.css",
+    "main.js": "/static/js/main.1909cf9e.chunk.js",
+    "main.js.map": "/static/js/main.1909cf9e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8fba66f0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8fba66f0.js.map",
+    "static/js/2.65ef2854.chunk.js": "/static/js/2.65ef2854.chunk.js",
+    "static/js/2.65ef2854.chunk.js.map": "/static/js/2.65ef2854.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.e1735a30.chunk.css.map": "/static/css/main.e1735a30.chunk.css.map",
+    "static/js/2.65ef2854.chunk.js.LICENSE.txt": "/static/js/2.65ef2854.chunk.js.LICENSE.txt",
+    "static/media/github.22e65707.svg": "/static/media/github.22e65707.svg",
+    "static/media/linkedin.2eda7bdd.svg": "/static/media/linkedin.2eda7bdd.svg",
+    "static/media/thumbs-down.adb29cca.svg": "/static/media/thumbs-down.adb29cca.svg",
+    "static/media/thumbs-up.07517878.svg": "/static/media/thumbs-up.07517878.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8fba66f0.js",
+    "static/js/2.65ef2854.chunk.js",
+    "static/css/main.e1735a30.chunk.css",
+    "static/js/main.1909cf9e.chunk.js"
+>>>>>>> 002b8b0bf8df857f65b52354e6f5d367ddbbaf61
   ]
 }

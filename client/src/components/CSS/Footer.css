@@ -1,23 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Kosugi+Maru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
 
 .footer-wrapper {
     display: flex;
-    justify-content: space-between;
-    position: fixed;
+    flex-direction: column;
     width: 100%;
     bottom: 0;
+    border-top: solid 1px #3E2195;
+    height: 9vh;
+}
+
+.footer-madeby, .footer-madeby a:link, .footer-madeby a:visited, .footer-madeby a:active {
+    font-size: small;
+    color: #3E2195;
+    padding: 7px 0 0 0;
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+.footer-pod, .footer-pod a:link, .footer-pod a:visited, .footer-pod a:active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    margin: 0 2px 0 2px;
+    filter: drop-shadow(2px 2px 1px orange);
+    color: #3E2195;
 }
 
 .footer-section {
-    margin: 0 10px 0 10px;
-    font-size: small;
-    font-family: 'Kosugi Maru', sans-serif;
-    padding: 10px;
+    font-size: 10px;
+    font-family: 'Gowun Dodum', sans-serif;
+    padding: 0 0 5px 0;
+}
+
+.footer-detail, .footer-detail a:link, .footer-detail a:visited, .footer-detail a:active {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 5px;
+    color: #3E2195;
+    font-weight: bold;
+    font-family: 'Gowun Dodum', sans-serif;
+    width: 95%;
 }
 
 
 @media screen and (min-width: 550px) {
 .footer-wrapper {
     width: 550px;
+    height: 8vh;
 }
 }
