@@ -1,27 +1,25 @@
 import { createContext, useState } from "react";
 
-export const Context = createContext(null);
+const Context = createContext(null);
 
-function ContextApi({ children }) {
-  const [isLogged, setIsLogged] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    id: "",
-  });
-  const [issueList, setIssueList] = useState([]);
+// const ContextApi = () => {
+//   const [isLogged, setIsLogged] = useState(false);
+//   const [userInfo, setUserInfo] = useState({
+//     id: "",
+//   });
+//   const [issueList, setIssueList] = useState([]);
 
-  return (
-    <Context.Provider
-      value={{
-        isLogged: isLogged,
-        setIsLogged: setIsLogged,
-        userInfo: userInfo,
-        setUserInfo: setUserInfo,
-        issueList: issueList,
-        setIssueList: setIssueList,
-      }}>
-      {children}
-    </Context.Provider>
-  );
-}
+//   return (
+//     <Context.Provider
+//       value={{
+//         isLogged: isLogged,
+//         setIsLogged: setIsLogged,
+//         userInfo: userInfo,
+//         setUserInfo: setUserInfo,
+//         issueList: issueList,
+//         setIssueList: setIssueList,
+//       }}></Context.Provider>
+//   );
+// };
 
-export default ContextApi;
+export default Context;

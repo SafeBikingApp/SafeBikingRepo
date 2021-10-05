@@ -4,10 +4,11 @@ import Title from "./Title";
 import Button from "./Button";
 import axios from "axios";
 import "./CSS/Button.css";
-// import ContextApi from "../contexts/ContextApi";
+import Context from "../contexts/ContextApi";
 
 function UserLogin() {
-  //   const { setIsLogged } = useContext(ContextApi);
+  const { setIsLogged, isLogged, setUserInfo, userInfo } = useContext(Context);
+  console.log(isLogged, userInfo);
 
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -39,8 +40,8 @@ function UserLogin() {
         console.log(response);
 
         if (response.data.email) {
-          //   setIsLogged(true);
-          //   setUserInfo(response.data);
+          setIsLogged(true);
+          setUserInfo(response.data);
           setMessage({ info: "Succesfully logged in", state: true });
         } else {
           setMessage({ info: response.data.message, state: true });
