@@ -8,11 +8,21 @@
     align-items: center;
 }
 
-.issue-marker {
+.issue-marker-more-down {
+    background: none;
+    border: none;
+    opacity: 0.5;
+}
+
+.issue-marker-more-up {
     background: none;
     border: none;
 }
 
-.issue-marker img {
+.issue-marker-more-up img {
+    width: 25px;
+}
+
+.issue-marker-more-down img {
     width: 25px;
 }

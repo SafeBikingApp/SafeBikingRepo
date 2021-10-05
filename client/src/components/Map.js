@@ -24,7 +24,9 @@ const Map = (props) => {
     properties: {
       cluster: false,
       issueId: issue._id,
-      category: issue.category,
+      category: issue.type,
+      voteUp: issue.upVotes.length,
+      voteDown: issue.downVotes.length
     },
     geometry: {
       type: "Point",
@@ -109,9 +111,11 @@ const Map = (props) => {
               lat={latitude}
               lng={longitude}
             >
-              <button className="issue-marker">
-                <img src="./img/logo.png" alt="issue" />
+              <button className={cluster.properties.voteUp > cluster.properties.voteDown ? 'issue-marker-more-up':'issue-marker-more-down'} >
+                <img src='./img/logo.png' alt='issue'/>
               </button>
+              {/* <CardIssue issue_id={cluster.properties.issueId} title={cluster.properties.category}>
+              </CardIssue> */}
             </Marker>
           );
         })}

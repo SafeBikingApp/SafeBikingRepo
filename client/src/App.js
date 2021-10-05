@@ -22,7 +22,7 @@ function App() {
               <Header />
                 <Switch>
                     <Route exact path="/" component={Map}/>
-                    <Route exact path="/issue" component={Issue} />
+                    <Route exact path="/issue/" component={Issue} />
                     <Route exact path="/report_issue" component={ReportIssue} />
                     <Route exact path="/user_interface" component={UserInterface} />
                     <Route exact path="/user_login" component={UserLogin} />
