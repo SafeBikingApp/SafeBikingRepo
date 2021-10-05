@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./CSS/UserRegister.css";
 import Title from "./Title";
-import Button from "./Button";
 import axios from "axios";
+import "./CSS/Button.css";
 
 function UserRegister() {
   const [username, setUsername] = useState("");
@@ -12,7 +12,7 @@ function UserRegister() {
   const handleSubmit = () => {
     axios({
       method: "post",
-      url: "http://localhost:4000/api/users/sign-up",
+      url: "/api/users/sign-up",
       data: {
         username: username,
         email: email,
@@ -66,7 +66,7 @@ function UserRegister() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <div className="userregister-button">
-          <Button name="REGISTER" handleClick={handleSubmit} />{" "}
+          <button name="REGISTER" onClick={handleSubmit}>REGISTER</button>{" "}
         </div>{" "}
       </div>
     </div>
