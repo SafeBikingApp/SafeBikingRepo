@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/SafeBikingApp/SafeBikingRepo/issues"
   },
-  "homepage": "https://github.com/SafeBikingApp/SafeBikingRepo#readme"
+  "homepage": "https://github.com/SafeBikingApp/SafeBikingRepo#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.2",
+    "mongoose": "^6.0.8",
+    "nodemon": "^2.0.13"
+  }
 }
