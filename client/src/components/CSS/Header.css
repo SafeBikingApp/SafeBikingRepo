@@ -6,7 +6,7 @@
     align-items: center;
     padding: 10px;
     border-bottom: solid 2px #3E2195;
-    height: 6vh;
+    height: 4vh;
 }
 
 .header-title {
@@ -31,4 +31,11 @@
     margin: 0 8px 5px 0;
     height: 30px;
     vertical-align: middle;
+}
+
+
+@media screen and (min-width: 550px) {
+.header-wrapper {
+    height: 5vh;
+}
 }

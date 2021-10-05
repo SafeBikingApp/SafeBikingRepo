@@ -6,7 +6,7 @@
     width: 100%;
     bottom: 0;
     border-top: solid 1px #3E2195;
-    height: 11vh;
+    height: 9vh;
 }
 
 .footer-madeby, .footer-madeby a:link, .footer-madeby a:visited, .footer-madeby a:active {
@@ -48,5 +48,6 @@
 @media screen and (min-width: 550px) {
 .footer-wrapper {
     width: 550px;
+    height: 8vh;
 }
 }

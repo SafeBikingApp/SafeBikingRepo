@@ -7,9 +7,9 @@ function CardIssue(props) {
 
     return (
         <div className="cardissue-wrapper light-color-bg">
-            <div className="cardissue-title dark-color-bg">{props.title}</div>
-            <div className="cardissue-body"><Link to={"_"}><Votes color={false} /></Link></div>
-            <div className="cardissue-footer dark-color-bg"><Link to={"_"}>More info</Link></div>
+            <div className="cardissue-title dark-color-bg">{props.title}Title</div>
+            <div className="cardissue-body"><Votes color={false} id={props.id} /></div>
+            <div className="cardissue-footer dark-color-bg"><Link to={`/issue/${props.id}`} id={props.id}>More info</Link></div>
         </div>
     )
 };
