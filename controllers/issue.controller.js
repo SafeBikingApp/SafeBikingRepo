@@ -53,9 +53,9 @@ const findAll = async (req, res) => {
 // };
 
 const allComments = async (req, res) => {
-  const { id } = req.params;
+  const { id: issue_id } = req.params;
   try {
-    const foundIssue = await IssueModel.findById({ _id: id });
+    const foundIssue = await IssueModel.findById(issue_id);
     if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
     res.json(foundIssue.comments);
   } catch (error) {
@@ -107,8 +107,8 @@ const newComment = async (req, res) => {
 // vote param upvote || downvote
 const vote = async (req, res) => {
   const { id: issue_id, vote } = req.params;
-  const { user_id } = req.body;
-  console.log(req.user);
+  const user_id = req.user._id.toString();
+  console.log(user_id);
   try {
     const foundIssue = await IssueModel.findById(issue_id);
     if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");

@@ -1,5 +1,6 @@
 const UserModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
+const userJoiSchema = require("../utils/validation");
 
 const addUser = async (req, res) => {
   const { email, username, password } = req.body;
@@ -7,12 +8,18 @@ const addUser = async (req, res) => {
     // checking if the email exist
     const userExist = await UserModel.find({ email });
     if (userExist.length) await Promise.reject("USER_ALREADY_EXIST");
+    // TODO JOI VALIDATION
+    // const { error:validationError } = await userJoiSchema.validateAsync(req.body);
+
+    // // console.log("value", value);
+    // console.log("error", validationError);
     // if it doesn't create a new user
     const newUser = await UserModel.create({
       email,
       username,
       password: bcrypt.hashSync(password, 10),
     });
+
     res.status(200).json({ message: "User created succefully" });
   } catch (error) {
     console.log(error);
@@ -58,9 +65,5 @@ const editUser = async (req, res) => {
     }
   }
 };
-
-// const addComment = async (comment)=>{
-
-// }
 
 module.exports = { addUser, editUser };
