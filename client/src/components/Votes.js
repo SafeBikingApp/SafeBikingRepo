@@ -6,11 +6,12 @@ import {ReactComponent as Down} from "./thumbs-down.svg";
 
 function Votes(props) {
 
-    const [textColor, setTextColor] = useState(false)
+    const [textColor, setTextColor] = useState(false);
+    const [data, setData] = useState([]);
 
     useEffect(()=>{
         axios
-        .post(`api/issues/${props.id}`)
+        .get(`api/issues/${props.id}`)
         .then((res) => {
             console.log(res)
             setData(res.data)
@@ -20,11 +21,9 @@ function Votes(props) {
         });
     },[]);
 
-    const [data, setData] = useState([]);
-
     const handleClickUp = (e) => {
         axios
-        .post(`api/issues/${props.id}/upVote`)
+        .post(`api/issues/615b582df3c49227affa027e/upVote/${props.id}`)
         .then((res) => {
             console.log(res)
         })
@@ -34,7 +33,7 @@ function Votes(props) {
     };
     const handleClickDown = (e) => {
         axios
-        .post(`api/issues/${props.id}/downVote`)
+        .post(`api/issues/615b582df3c49227affa027e/downVote/${props.id}`)
         .then((res) => {
             console.log(res)
         })

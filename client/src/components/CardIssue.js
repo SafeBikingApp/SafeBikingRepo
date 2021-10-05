@@ -12,6 +12,6 @@ function CardIssue(props) {
             <div className="cardissue-footer dark-color-bg"><Link to={`/issue/${props.id}`} id={props.id}>More info</Link></div>
         </div>
     )
-};
+}; 
 
 export default CardIssue;

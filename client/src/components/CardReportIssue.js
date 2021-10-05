@@ -6,7 +6,7 @@ function CardReportIssue(props) {
 
     return (
         <div className="cardreportissue-wrapper dark-color-bg">
-            <span className="cardreportissue-link"><Link to={props.link}>Report Issue</Link></span>
+            <span className="cardreportissue-link"><Link to={"/report_issue"} long={props.long} lat={props.lat}>Report Issue</Link></span>
         </div>
     )
 };
