@@ -14,34 +14,6 @@ const Map = (props) => {
   // 1) map setup
   const mapRef = useRef();
   const [zoom, setZoom] = useState(13);
-
-  const issuesObj = [
-    {
-      lat: 52.506157052166536,
-      lng: 13.42598379465045,
-      message: "Road works",
-      _id: "615c9cedad39f1f1c386e959"
-    },
-    {
-      lat: 52.506682758669584,
-      lng: 13.424079419446123,
-      message: "Pay for road",
-      _id: "615c9cedad39f1f1c386e959"
-    },
-    {
-      lat: 52.50661416254137,
-      lng: 13.42686893870312,
-      message: "Dance to road",
-      _id: "615c9cedad39f1f1c386e959"
-    },
-    {
-      lat: 52.506163595025654,
-      lng: 13.424685598119888,
-      message: "Go away",
-      _id: "615c9cedad39f1f1c386e959"
-    },
-  ];
-
   const [bounds, setBounds] = useState(null);
   // 2) load and format data
   const url = "/api/issues";
@@ -69,7 +41,7 @@ const Map = (props) => {
     points,
     bounds,
     zoom,
-    options: { radius: 50, maxZoom: 20 },
+    options: { radius: 75, maxZoom: 20 },
   });
   // 4) render map
 
@@ -78,7 +50,6 @@ const Map = (props) => {
   function _onClick(obj) {
     console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
   }
-
 
   return (
     <div style={{ height: "83vh", width: "100%" }}>
@@ -135,14 +106,6 @@ const Map = (props) => {
           }
 
           return (
-
-            <CardIssue
-              lat={marker.lat}
-              lng={marker.lng}
-              text={marker.message}
-              issue_id={marker._id}
-            />
-
             <Marker
               key={cluster.properties.issueId}
               lat={latitude}
@@ -151,10 +114,9 @@ const Map = (props) => {
               <button className={cluster.properties.voteUp > cluster.properties.voteDown ? 'issue-marker-more-up':'issue-marker-more-down'} >
                 <img src='./img/logo.png' alt='issue'/>
               </button>
-              {/* <CardIssue issue_id={cluster.properties.issueId} title={cluster.properties.category}>
-              </CardIssue> */}
+              // {/* <CardIssue issue_id={cluster.properties.issueId} title={cluster.properties.category}>
+              // </CardIssue> */}
             </Marker>
-
           );
         })}
       </GoogleMapReact>
