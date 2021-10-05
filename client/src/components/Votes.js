@@ -11,7 +11,7 @@ function Votes(props) {
 
     useEffect(()=>{
         axios
-        .get(`api/issues/${props.id}`)
+        .get(`api/issues/${props.issue_id}`)
         .then((res) => {
             console.log(res)
             setData(res.data)
@@ -21,37 +21,17 @@ function Votes(props) {
         });
     },[]);
 
-    const handleClickUp = (e) => {
-        axios
-        .post(`api/issues/615b582df3c49227affa027e/upVote/${props.id}`)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-          console.log(err)
-        });
-    };
-    const handleClickDown = (e) => {
-        axios
-        .post(`api/issues/615b582df3c49227affa027e/downVote/${props.id}`)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-          console.log(err)
-        });
-    };
-
     return (
         <div className={textColor === true ? "votes-wrapper light-color-text" : "votes-wrapper dark-color-text"}>
             <div className="votes-thumb">
-            <span className={textColor === true ? "votes-number light-color-text" : "votes-number dark-color-text"}>{data.upvotes}</span>&nbsp;<Up onClick={handleClickUp} />
+            <span className={textColor === true ? "votes-number light-color-text" : "votes-number dark-color-text"}>{data.upvotes}</span>&nbsp;<Up onClick={props.handleClickUp} />
             </div>
             <div className="votes-thumb">
-            <span className={textColor === true ? "votes-number light-color-text" : "votes-number dark-color-text"}>{data.downvotes}</span>&nbsp;<Down onClick={handleClickDown} />
+            <span className={textColor === true ? "votes-number light-color-text" : "votes-number dark-color-text"}>{data.downvotes}</span>&nbsp;<Down onClick={props.handleClickDown} />
             </div>
         </div>
     )
 };
 
 export default Votes;
+/* cardissue and issue send issue_id props */

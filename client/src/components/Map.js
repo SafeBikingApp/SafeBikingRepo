@@ -14,6 +14,34 @@ const Map = (props) => {
   // 1) map setup
   const mapRef = useRef();
   const [zoom, setZoom] = useState(13);
+<<<<<<< HEAD
+  const issuesObj = [
+    {
+      lat: 52.506157052166536,
+      lng: 13.42598379465045,
+      message: "Road works",
+      _id: "615c9cedad39f1f1c386e959"
+    },
+    {
+      lat: 52.506682758669584,
+      lng: 13.424079419446123,
+      message: "Pay for road",
+      _id: "615c9cedad39f1f1c386e959"
+    },
+    {
+      lat: 52.50661416254137,
+      lng: 13.42686893870312,
+      message: "Dance to road",
+      _id: "615c9cedad39f1f1c386e959"
+    },
+    {
+      lat: 52.506163595025654,
+      lng: 13.424685598119888,
+      message: "Go away",
+      _id: "615c9cedad39f1f1c386e959"
+    },
+  ];
+=======
   const [bounds, setBounds] = useState(null);
   // 2) load and format data
   const url = "/api/issues";
@@ -50,6 +78,7 @@ const Map = (props) => {
   function _onClick(obj) {
     console.log(obj.x, obj.y, obj.lat, obj.lng, obj.event);
   }
+>>>>>>> dd40dfcea554dd2e00d631b3269ac168bb64508a
 
   return (
     <div style={{ height: "83vh", width: "100%" }}>
@@ -106,6 +135,14 @@ const Map = (props) => {
           }
 
           return (
+<<<<<<< HEAD
+            <CardIssue
+              lat={marker.lat}
+              lng={marker.lng}
+              text={marker.message}
+              issue_id={marker._id}
+            />
+=======
             <Marker
               key={cluster.properties.issueId}
               lat={latitude}
@@ -117,6 +154,7 @@ const Map = (props) => {
               {/* <CardIssue issue_id={cluster.properties.issueId} title={cluster.properties.category}>
               </CardIssue> */}
             </Marker>
+>>>>>>> dd40dfcea554dd2e00d631b3269ac168bb64508a
           );
         })}
       </GoogleMapReact>

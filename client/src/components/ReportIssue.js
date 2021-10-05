@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import "./CSS/ReportIssue.css";
 import Title from "./Title";
 import Button from "./Button";
+/* props.long, props.lat */
 
-function ReportIssue() {
+
+function ReportIssue(props) {
 
     const handleClick = (e) => {
         setIssue(e.target.value)

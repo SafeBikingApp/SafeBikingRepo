@@ -5,30 +5,64 @@ import Title from "./Title";
 import Button from "./Button";
 import Comments from "./Comments";
 
-function UserInterface() {
+function UserInterface(props) {
 
-    // useEffect(()=>{
-    //     axios.get("/api/issues")
-    //     .then((res)=>{
-    //         console.log(res.data)
-    //         setData(res.data)
-    //     })
-    //     .catch((err)=>{
-    //         console.log(err)
-    //     })
-    // },[])
-
-    const [data, setData] = useState([]);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const handleClickUpdate = (e) => {
 
+    const [data, setData] = useState([])
+
+    useEffect(()=>{
+        axios
+        .put(`/api/auth/verify`)
+        .then((res) => {
+            console.log(res)
+            setUsername(res.username)
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    },[]);
+
+    const handleClickUpdate = (e) => {
+        axios({
+            method: "put",
+            url: `/api/users/${props.user_id}/edit`,
+            data: {_id: props.user_id, email: email, password: password},
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-type": "application/json",
+            },
+          })
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     };
     const handleClickLogout = (e) => {
-
+        axios.post('/api/auth/log-out')
+        .then((res)=>{
+            redirectMap()
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     };
     const handleClickDeleteAccount = (e) => {
+        axios.delete(`/api/users/${props.user_id}/delete`)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    };
+
+    const redirectMap = ()=>{
 
     };
 
@@ -53,11 +87,12 @@ function UserInterface() {
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <Button name="DELETE ACCOUNT" handleClick={handleClickDeleteAccount} />
             </div>
-            <div className="userinterface-title dark-color-bg">
+{/* COMMENTS */}
+            <div className="userinterface-title dark-color-bg userinterface-noshow">
                  Comments
             </div>
             <div className="userinterface-section">
-                <Comments />
+                {/* <Comments /> */}
             </div>
 
         </div>
@@ -65,3 +100,5 @@ function UserInterface() {
 };
 
 export default UserInterface;
+
+/* userstatus sends user_id as props */
