@@ -9,7 +9,7 @@ const addUser = async (req, res) => {
     const userExist = await UserModel.find({ email });
     if (userExist.length) await Promise.reject("USER_ALREADY_EXIST");
     // JOI VALIDATION
-    await userJoiSchema.validateAsync(req.body);
+    // await userJoiSchema.validateAsync(req.body);
     // if it doesn't create a new user
     const newUser = await UserModel.create({
       email,
@@ -21,11 +21,11 @@ const addUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     if (error?.details) {
-      res.status(400).json(error?.details[0]);
+      res.json(error?.details[0]);
     } else if (error === "USER_ALREADY_EXIST") {
-      res.status(403).json({ message: "Sorry this user already exists" });
+      res.json({ message: "Sorry this user already exists" });
     } else {
-      res.status(500).json({ message: "Sorry somthing went wrong" });
+      res.json({ message: "Sorry somthing went wrong" });
     }
   }
 };
@@ -56,11 +56,11 @@ const editUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     if (error === "USER_NOT_FOUND") {
-      res.status(403).json({ message: "Sorry user not found" });
+      res.json({ message: "Sorry user not found" });
     } else if (error === "THIS_EMAIL_ALREADY_EXIST") {
-      res.status(403).json({ message: "This email is already taken" });
+      res.json({ message: "This email is already taken" });
     } else {
-      res.status(500).json({ message: "Sorry something went wrong" });
+      res.json({ message: "Sorry something went wrong" });
     }
   }
 };

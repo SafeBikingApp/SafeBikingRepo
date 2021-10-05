@@ -1,46 +1,94 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CSS/UserLogin.css";
 import Title from "./Title";
 import Button from "./Button";
 import axios from "axios";
 import "./CSS/Button.css";
-import { Redirect } from "react-router";
+// import ContextApi from "../contexts/ContextApi";
 
 function UserLogin() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //   const { setIsLogged } = useContext(ContextApi);
+
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const [registerInfo, setRegisterInfo] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const [message, setMessage] = useState({
+    info: "",
+    state: false,
+  });
 
   const handleClickLogin = () => {
+    console.log(loginInfo);
     axios({
       method: "post",
-      url: "api/users/sign-up",
-      data: {
-        username: username,
-        email: email,
-        password: password,
-      },
+      url: "/api/auth/log-in",
+      data: loginInfo,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-type": "application/json",
       },
     })
-      .then((data) => {
-        console.log("Hi Jaime");
-        console.log(data.data[0]);
-        <Redirect to="/" />;
+      .then((response) => {
+        console.log(response);
+
+        if (response.data.email) {
+          //   setIsLogged(true);
+          //   setUserInfo(response.data);
+          setMessage({ info: "Succesfully logged in", state: true });
+        } else {
+          setMessage({ info: response.data.message, state: true });
+        }
+        setTimeout(() => setMessage({ state: false, info: "" }), 5000);
       })
 
       .catch((error) => {
-        console.log(error.message);
+        console.log("this works", error);
       });
 
-    console.log("CLICK", email);
-    setUsername("");
-    setEmail("");
-    setPassword("");
+    setLoginInfo({
+      email: "",
+      password: "",
+    });
   };
-  const handleClickRegister = (e) => {};
+  const handleClickRegister = (e) => {
+    axios({
+      method: "post",
+      url: "/api/users/sign-up",
+      data: registerInfo,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.data.email) {
+          setMessage({
+            info: "Registration is complete, please log in",
+            state: true,
+          });
+        } else {
+          console.log(response);
+          setMessage({ info: response.data.message, state: true });
+        }
+        setTimeout(() => setMessage({ state: false, info: "" }), 5000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setRegisterInfo({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
 
   return (
     <div className="userlogin-wrapper">
@@ -51,21 +99,30 @@ function UserLogin() {
         <input
           className="userlogin-input"
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={loginInfo.email}
+          onChange={(e) =>
+            setLoginInfo({ ...loginInfo, email: e.target.value })
+          }
         />
         Password:
         <input
           className="userlogin-input"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={loginInfo.password}
+          onChange={(e) =>
+            setLoginInfo({ ...loginInfo, password: e.target.value })
+          }
         />
         <div className="userlogin-button">
-          <Button name="LOG IN" onClick={handleClickLogin} component="" />
+          <button
+            className="button dark-color-bg"
+            name="LOG IN"
+            onClick={handleClickLogin}>
+            LOGIN
+          </button>
         </div>
       </div>
-
+      <div>{message.state && message.info}</div>
       <div className="userlogin-container dark-color-text light-color-bg">
         <h2>Register</h2>
         Username:
@@ -73,28 +130,38 @@ function UserLogin() {
         <input
           className="userlogin-input"
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={registerInfo.username}
+          onChange={(e) =>
+            setRegisterInfo({ ...registerInfo, username: e.target.value })
+          }
         />
         <br />
         Password:
         <br />
         <input
           className="userlogin-input"
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          value={registerInfo.password}
+          onChange={(e) =>
+            setRegisterInfo({ ...registerInfo, password: e.target.value })
+          }
         />
         <br />
         Email:
         <br />
         <input
           className="userlogin-input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={registerInfo.email}
+          onChange={(e) =>
+            setRegisterInfo({ ...registerInfo, email: e.target.value })
+          }
         />
         <div className="userlogin-button">
-          <Button name="REGISTER" onClick={handleClickRegister} />
+          <button
+            onClick={handleClickRegister}
+            className="button dark-color-bg">
+            REGISTER
+          </button>
         </div>
       </div>
     </div>
