@@ -19,8 +19,9 @@
 .footer-pod, .footer-pod a:link, .footer-pod a:visited, .footer-pod a:active {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 3px;
-    margin: 0 10px 0 10px;
+    margin: 0 2px 0 2px;
     filter: drop-shadow(2px 2px 1px orange);
     color: #3E2195;
 }
@@ -35,10 +36,12 @@
     font-size: 15px;
     display: flex;
     justify-content: space-between;
+    margin: auto;
     padding: 5px;
     color: #3E2195;
     font-weight: bold;
     font-family: 'Gowun Dodum', sans-serif;
+    width: 95%;
 }
 
 
