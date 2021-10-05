@@ -22,7 +22,11 @@ function App() {
               <Header />
                 <Switch>
                     <Route exact path="/" component={Map}/>
+<<<<<<< HEAD
                     <Route exact path="/issue/:id" component={Issue} />
+=======
+                    <Route exact path="/issue/" component={Issue} />
+>>>>>>> dd40dfcea554dd2e00d631b3269ac168bb64508a
                     <Route exact path="/report_issue" component={ReportIssue} />
                     <Route exact path="/user_interface/:id" component={UserInterface} />
                     <Route exact path="/user_login" component={UserLogin} />

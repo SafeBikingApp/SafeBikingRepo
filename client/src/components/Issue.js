@@ -8,7 +8,7 @@ import Button from "./Button";
 function Issue(props) {
 
     useEffect(()=>{
-        axios.get("/api/issues")
+        axios.get("/api/issues/615c9b8277f6d3c42f44cbe6")
         .then((res)=>{
             console.log(res.data)
             setData1(res.data)
@@ -18,8 +18,13 @@ function Issue(props) {
         })
     },[])
 
+<<<<<<< HEAD
     const [creator, setCreator] = useState(false);
     const [data1, setData1] = useState([]);
+=======
+    const [creator, setCreator] = useState(true);
+    const [data, setData] = useState({});
+>>>>>>> dd40dfcea554dd2e00d631b3269ac168bb64508a
     const [info, setInfo] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
