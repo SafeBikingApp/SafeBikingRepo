@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
+.cardissue-wrapper {
+    border-radius: 20px 20px 20px 0px;
+    width: 95px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    font-family: 'Quicksand', sans-serif;
+}
+
+.cardissue-body {
+    height: 50px;
+    margin: 0 0 -15px 0;
+}
+.cardissue-title {
+    padding: 5px;
+    border-radius: 20px 20px 0px 0px;
+    color: white;
+}
+
+.cardissue-footer a:link, .cardissue-footer a:visited {
+    color: white;
+}
+
+.cardissue-footer {
+    padding: 5px;
+    font-size: small;
+    border-radius: 0px 0px 20px 0;
+}

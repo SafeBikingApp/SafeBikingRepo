@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Map from "./components/Map";
+import Issue from "./components/Issue";
+import ReportIssue from "./components/ReportIssue";
+import UserInterface from "./components/UserInterface";
+import UserLogin from "./components/UserLogin";
+import UserRegister from "./components/UserRegister";
+import Footer from "./components/Footer";
+import Votes from "./components/Votes";
+import CardIssue from "./components/CardIssue";
+import CardReportIssue from "./components/CardReportIssue";
+import Comments from "./components/Comments";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+            <div>
+              <Header />
+                <Switch>
+                    <Route exact path="/" component={Map}/>
+                    <Route exact path="/issue" component={Issue} />
+                    <Route exact path="/report_issue" component={ReportIssue} />
+                    <Route exact path="/user_interface" component={UserInterface} />
+                    <Route exact path="/user_login" component={UserLogin} />
+                    <Route exact path="/user_register" component={UserRegister} />
+                </Switch>
+              <Footer />
+            </div>
+      </Router>
     </div>
   );
 }
