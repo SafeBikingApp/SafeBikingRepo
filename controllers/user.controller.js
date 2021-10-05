@@ -8,11 +8,8 @@ const addUser = async (req, res) => {
     // checking if the email exist
     const userExist = await UserModel.find({ email });
     if (userExist.length) await Promise.reject("USER_ALREADY_EXIST");
-    // TODO JOI VALIDATION
-    // const { error:validationError } = await userJoiSchema.validateAsync(req.body);
-
-    // // console.log("value", value);
-    // console.log("error", validationError);
+    // JOI VALIDATION
+    await userJoiSchema.validateAsync(req.body);
     // if it doesn't create a new user
     const newUser = await UserModel.create({
       email,
@@ -23,7 +20,9 @@ const addUser = async (req, res) => {
     res.status(200).json({ message: "User created succefully" });
   } catch (error) {
     console.log(error);
-    if (error === "USER_ALREADY_EXIST") {
+    if (error?.details) {
+      res.status(400).json(error?.details[0]);
+    } else if (error === "USER_ALREADY_EXIST") {
       res.status(403).json({ message: "Sorry this user already exists" });
     } else {
       res.status(500).json({ message: "Sorry somthing went wrong" });
