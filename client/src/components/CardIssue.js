@@ -7,11 +7,7 @@ function CardIssue(props) {
 
     return (
         <div className="cardissue-wrapper light-color-bg">
-<<<<<<< HEAD
-            <div className="cardissue-title dark-color-bg">{props.title}Title</div>
-=======
             <div className="cardissue-title dark-color-bg">{props.title}</div>
->>>>>>> dd40dfcea554dd2e00d631b3269ac168bb64508a
             <div className="cardissue-body"><Votes color={false} issue_id={props.issue_id} /></div>
             <div className="cardissue-footer dark-color-bg"><Link to={`/issue/${props.issue_id}`} issue_id={props.issue_id}>More info</Link></div>
         </div>

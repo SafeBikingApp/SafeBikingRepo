@@ -18,13 +18,8 @@ function Issue(props) {
         })
     },[])
 
-<<<<<<< HEAD
     const [creator, setCreator] = useState(false);
     const [data1, setData1] = useState([]);
-=======
-    const [creator, setCreator] = useState(true);
-    const [data, setData] = useState({});
->>>>>>> dd40dfcea554dd2e00d631b3269ac168bb64508a
     const [info, setInfo] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");

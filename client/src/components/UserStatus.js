@@ -9,9 +9,9 @@ function UserStatus(props) {
     const [data, setData] = useState();
     const [userId, setUserId] = useState("615b0bafd872454b7a503289")
 
-    useEffect(()=>{
-        data.message ? setLoggedin(false) : setLoggedin(true)
-    },[data]);
+    // useEffect(()=>{
+    //     data.message ? setLoggedin(false) : setLoggedin(true)
+    // },[data]);
 
     useEffect(()=>{
         axios.get('/api/auth/verify')

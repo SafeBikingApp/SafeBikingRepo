@@ -76,8 +76,8 @@ function UserInterface(props) {
                     Password:
                 </div>
                 <div className="userinterface-fields">
-                    <input className="userinterface-input" value={email} />
-                    <input className="userinterface-input" value={password} />
+                    <input className="userinterface-input" onChange={(e)=>setEmail(e.target.value)} />
+                    <input className="userinterface-input" onChange={(e)=>setPassword(e.target.value)} />
                 </div>
             </div>
             <div className="userinterface-button">
