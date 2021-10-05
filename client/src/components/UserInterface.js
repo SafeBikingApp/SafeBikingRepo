@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import "./CSS/UserInterface.css";
 import Title from "./Title";
 import Button from "./Button";
@@ -6,10 +6,16 @@ import Comments from "./Comments";
 
 function UserInterface() {
 
-    const [username, setUsername] = useState("Lorianne");
-    const [password, setPassword] = useState("123");
-    const [email, setEmail] = useState("uip@iosf.com")
-    const handleClick = (e) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const handleClickUpdate = (e) => {
+
+    };
+    const handleClickLogout = (e) => {
+
+    };
+    const handleClickDeleteAccount = (e) => {
 
     };
 
@@ -28,7 +34,11 @@ function UserInterface() {
                 </div>
             </div>
             <div className="userinterface-button">
-                <Button name="UPDATE" handleClick={handleClick} component="" />
+                <Button name="UPDATE" handleClick={handleClickUpdate} />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button name="LOGOUT" handleClick={handleClickLogout} />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Button name="DELETE ACCOUNT" handleClick={handleClickDeleteAccount} />
             </div>
             <div className="userinterface-title dark-color-bg">
                  Comments

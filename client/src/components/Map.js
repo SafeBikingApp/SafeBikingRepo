@@ -51,15 +51,6 @@ const Map = (props) => {
             
           })}
         </GoogleMapReact>
-        <div className="map-wrapper">
-            <Link to="/issue">Issue</Link>
-            <br />
-            <Link to="/report_issue">ReportIssue</Link>
-            <br />
-            <Link to="/user_interface">UserInterface</Link>
-            <br />
-            <Link to="/user_register">UserRegister</Link>
-        </div>
       </div>
     );
 }
