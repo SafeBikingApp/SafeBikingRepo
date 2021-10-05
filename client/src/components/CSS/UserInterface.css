@@ -4,7 +4,7 @@
     height: 83vh;
 }
 .userinterface-section {
-    margin: 0 20px 20px 20px;
+    margin: 0 30px 20px 30px;
 }
 
 .userinterface-input { 
@@ -49,4 +49,8 @@
     text-align: left;
     color: white;
     font-family: 'Quicksand', sans-serif;
+}
+
+.userinterface-noshow {
+    display: none;
 }

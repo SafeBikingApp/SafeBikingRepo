@@ -107,7 +107,7 @@ function Issue(props) {
                 </div>
                 <div className="issue-section-container"><Comments issue_id={info._id} /></div>
                 <div className="issue-detail issue-detail2">
-                    <input className="issue-input issue-input2" type="text" value={setMessage((e)=>e.target.value)} /><Button handleClick={handleClickComment} name="COMMENT" />
+                    <input className="issue-input issue-input2" type="text" onChange={(e)=>setMessage(e.target.value)} /><Button handleClick={handleClickComment} name="COMMENT" />
                 </div>
             </div>
 
@@ -118,8 +118,8 @@ function Issue(props) {
                     Modify Information
                 </div>
                 <div className="issue-section-container">
-                    <input className="issue-input" type="text" placeholder="Title" onChange={setTitle((e)=> e.target.value)} />
-                    <input className="issue-input" type="text-field" placeholder="Description" onChange={setDescription((e)=> e.target.value)} />
+                    <input className="issue-input" type="text" placeholder="Title" onChange={(e)=> setTitle(e.target.value)} />
+                    <input className="issue-input" type="text-field" placeholder="Description" onChange={(e)=> setDescription(e.target.value)} />
                     <div className="issue-detail">
                         <input className="issue-input" type="" placeholder="Photo" /><Button handleClick={handleClickPhoto} name="UPLOAD" />
                     </div>

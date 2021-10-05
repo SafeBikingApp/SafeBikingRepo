@@ -14,21 +14,25 @@ const Map = (props) => {
       lat: 52.506157052166536,
       lng: 13.42598379465045,
       message: "Road works",
+      _id: "615c9cedad39f1f1c386e959"
     },
     {
       lat: 52.506682758669584,
       lng: 13.424079419446123,
       message: "Pay for road",
+      _id: "615c9cedad39f1f1c386e959"
     },
     {
       lat: 52.50661416254137,
       lng: 13.42686893870312,
       message: "Dance to road",
+      _id: "615c9cedad39f1f1c386e959"
     },
     {
       lat: 52.506163595025654,
       lng: 13.424685598119888,
       message: "Go away",
+      _id: "615c9cedad39f1f1c386e959"
     },
   ];
 
@@ -48,6 +52,7 @@ const Map = (props) => {
               lat={marker.lat}
               lng={marker.lng}
               text={marker.message}
+              issue_id={marker._id}
             />
           );
         })}
