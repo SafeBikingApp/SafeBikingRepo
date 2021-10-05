@@ -57,3 +57,11 @@
     margin: 5px;
     color: rgba(0, 0, 0, 0.685);
 }
+
+.issue-input2 {
+    width: 65%;
+}
+
+.issue-detail2 {
+    margin: 10px;
+}

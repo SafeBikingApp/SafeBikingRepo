@@ -17,6 +17,9 @@ function Issue(props) {
     const handleClickDelete = ()=> {
         "delete values from db"
     };
+    const handleClickComment = ()=> {
+        "delete values from db"
+    };
 
     return (
         <div className="issue-wrapper">
@@ -39,6 +42,9 @@ function Issue(props) {
                     Comments
                 </div>
                 <div className="issue-section-container"><Comments /></div>
+                <div className="issue-detail issue-detail2">
+                    <input className="issue-input issue-input2" type="text" /><Button handleClick={handleClickComment} name="COMMENT" component="" />
+                </div>
             </div>
 {/* USER MODIFICATION */}
             <div className={creator ? "issue-section issue-modify-show" : "issue-section issue-modify-hide"}>

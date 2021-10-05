@@ -1,13 +1,13 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Context from './components/contexts/Context';
 import Header from "./components/Header";
 import Map from "./components/Map";
 import Issue from "./components/Issue";
 import ReportIssue from "./components/ReportIssue";
 import UserInterface from "./components/UserInterface";
 import UserLogin from "./components/UserLogin";
-import UserRegister from "./components/UserRegister";
 import Footer from "./components/Footer";
 import Votes from "./components/Votes";
 import CardIssue from "./components/CardIssue";
@@ -26,7 +26,6 @@ function App() {
                     <Route exact path="/report_issue" component={ReportIssue} />
                     <Route exact path="/user_interface" component={UserInterface} />
                     <Route exact path="/user_login" component={UserLogin} />
-                    <Route exact path="/user_register" component={UserRegister} />
                 </Switch>
               <Footer />
             </div>
