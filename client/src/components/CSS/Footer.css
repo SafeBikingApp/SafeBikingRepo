@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Kosugi+Maru&display=swap');
+
 .footer-wrapper {
     display: flex;
     justify-content: space-between;
-    /* width: 100vw; */
-    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 .footer-section {
     margin: 0 10px 0 10px;
     font-size: small;
+    font-family: 'Kosugi Maru', sans-serif;
+    padding: 10px;
+}
+
+
+@media screen and (min-width: 550px) {
+.footer-wrapper {
+    width: 550px;
+}
 }

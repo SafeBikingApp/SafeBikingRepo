@@ -4,9 +4,13 @@ import "./CSS/UserStatus.css";
 
 function UserStatus(props) {
 
+    const loggedin = props.loggedin;
+
     return (
         <div className="userstatus-wrapper">
-            <Link to={props.component}><button className="user-button dark-color-bg" onClick={props.handleClick} value={props.name} /></Link>
+            <Link to={loggedin ? "/user_interface" : "/user_login"}>
+            <img className={loggedin ? "user-button user-logged-in" : "user-button user-logged-out"} src="./img/person-circle.svg" alt="User" />
+            </Link>
         </div>
     )
 };

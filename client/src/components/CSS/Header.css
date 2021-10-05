@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@300;400;500&display=swap');
+
 .header-wrapper {
     display: flex;
     justify-content: space-between;
@@ -7,12 +9,25 @@
 }
 
 .header-title {
-    
+    font-family: 'Fredoka One', bold;
+    font-size: 28px;
+    filter: drop-shadow(2px 2px 1px orange);
+    vertical-align: middle;
 }
 
 .header-links {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 25%;
+    text-align: right;
+    font-family: 'Quicksand', sans-serif;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.header-logo { 
+    margin: 0 8px 5px 0;
+    height: 30px;
+    vertical-align: middle;
 }

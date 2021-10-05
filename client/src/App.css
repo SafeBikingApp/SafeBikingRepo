@@ -1,17 +1,24 @@
 .App {
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  height: 100vh;
 }
 
 * {
   text-decoration: none;
 }
 
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
 .light-color-bg { 
-  background-color: #DBD3F3;
+  background-color: #dcd1ff;
 }
 
 .light-color-text { 
-  color: #DBD3F3;
+  color: #dcd1ff;
 }
 
 .dark-color-bg { 
@@ -22,37 +29,18 @@
   color: #3E2195;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media screen and (min-width: 560px) {
+.App {
+  width: 550px;
+  margin: auto;
+  border-left: solid 1px #3E2195;
+  border-right: solid 1px #3E2195;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: orange;
+  background-size: cover;
+  background-position: center;
+  background-image:url(https://pixabay.com/get/g8048e76160b6c0336ed47d726269047bfa56a66c596036221f5486e71ddd7b2314c7153be354b5e16b2faf2e210c3de4b0d87962ecce110a4d05df03f760a88e627911b3d5d1286ba6ba41b485dfabfa_1920.jpg);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
