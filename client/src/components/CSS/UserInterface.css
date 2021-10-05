@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
 
+.userinterface-wrapper{
+    height: 83vh;
+}
 .userinterface-section {
-    margin: 0 20px 20px 20px;
+    margin: 0 30px 20px 30px;
 }
 
 .userinterface-input { 
@@ -46,4 +49,8 @@
     text-align: left;
     color: white;
     font-family: 'Quicksand', sans-serif;
+}
+
+.userinterface-noshow {
+    display: none;
 }

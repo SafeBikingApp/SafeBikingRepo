@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
 
+.reportissue-wrapper {
+    height: 83vh;
+}
 .reportissue-section-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: black;
     text-align: left;
-    margin: 0 20px 15px 20px;
+    margin: 0 30px 15px 30px;
 }
 
 .reportissue-title {

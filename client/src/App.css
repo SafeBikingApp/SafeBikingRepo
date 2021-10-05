@@ -37,10 +37,9 @@ input:focus, textarea:focus, select:focus {
   border-right: solid 1px #3E2195;
 }
 
-body {
+/* body {
   background-color: orange;
   background-size: cover;
-  background-position: center;
-  background-image:url(https://pixabay.com/get/g8048e76160b6c0336ed47d726269047bfa56a66c596036221f5486e71ddd7b2314c7153be354b5e16b2faf2e210c3de4b0d87962ecce110a4d05df03f760a88e627911b3d5d1286ba6ba41b485dfabfa_1920.jpg);
-}
+  background-image:url(https://pixabay.com/get/g20154394e4bc599544e1e686dafd779d0f9fa6eac5578f24fad6b405e02e9fe6c10ce89d57c4e171280e1a61f29cb5e0.jpg) no-repeat;
+} */
 }

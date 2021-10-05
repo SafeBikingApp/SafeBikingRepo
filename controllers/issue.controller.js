@@ -35,22 +35,22 @@ const findAll = async (req, res) => {
   }
 };
 
-// const findIssue = async (req, res, next) => {
-//     const { id } = req.params;
-//   try {
-//     const foundIssue = await IssueModel.findById({ _id: id });
-//     if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
-//     res.json(foundIssue);
-//   } catch (error) {
-//     console.log(error);
-//     if (error === "ISSUE_NOT_FOUND") {
-//       res.status(403).json({ message: "Sorry we couldn't find this issue" });
-//     } else {
-//       res.status(500).json({ message: "Sorry something went wrong" });
-//     }
-//   }
+const findIssue = async (req, res, next) => {
+    const { id } = req.params;
+  try {
+    const foundIssue = await IssueModel.findById({ _id: id });
+    if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
+    res.json(foundIssue);
+  } catch (error) {
+    console.log(error);
+    if (error === "ISSUE_NOT_FOUND") {
+      res.json({ message: "Sorry we couldn't find this issue" });
+    } else {
+      res.json({ message: "Sorry something went wrong" });
+    }
+  }
 
-// };
+};
 
 const allComments = async (req, res) => {
   const { id: issue_id } = req.params;
@@ -158,4 +158,4 @@ const vote = async (req, res) => {
   }
 };
 
-module.exports = { createNew, findAll, allComments, newComment, vote };
+module.exports = { createNew, findAll, findIssue, allComments, newComment, vote };

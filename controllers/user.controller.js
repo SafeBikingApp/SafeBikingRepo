@@ -20,8 +20,8 @@ const addUser = async (req, res) => {
     res.status(200).json({ message: "User created succefully" });
   } catch (error) {
     console.log(error);
-    if (error?.details) {
-      res.json(error?.details[0]);
+    if (error.details) {
+      res.status(400).json(error.details[0]);
     } else if (error === "USER_ALREADY_EXIST") {
       res.json({ message: "Sorry this user already exists" });
     } else {
