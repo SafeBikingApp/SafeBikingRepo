@@ -15,7 +15,7 @@ function UserInterface(props) {
 
     useEffect(()=>{
         axios
-        .put(`api/users/${props.user_id}/edit`)
+        .put(`/api/auth/verify`)
         .then((res) => {
             console.log(res)
             setUsername(res.username)
@@ -28,7 +28,7 @@ function UserInterface(props) {
     const handleClickUpdate = (e) => {
         axios({
             method: "put",
-            url: `api/users/${props.user_id}/edit`,
+            url: `/api/users/${props.user_id}/edit`,
             data: {_id: props.user_id, email: email, password: password},
             headers: {
               "Access-Control-Allow-Origin": "*",
@@ -43,7 +43,7 @@ function UserInterface(props) {
         })
     };
     const handleClickLogout = (e) => {
-        axios.post('api/auth/log-out')
+        axios.post('/api/auth/log-out')
         .then((res)=>{
             redirectMap()
             console.log(res)
@@ -53,7 +53,7 @@ function UserInterface(props) {
         })
     };
     const handleClickDeleteAccount = (e) => {
-        axios.delete(`api/users/${props.user_id}/delete`)
+        axios.delete(`/api/users/${props.user_id}/delete`)
         .then((res)=>{
             console.log(res)
         })

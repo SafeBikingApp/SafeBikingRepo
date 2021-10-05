@@ -38,7 +38,7 @@ function Issue(props) {
 
     const handleClickUp = (e) => {
         axios
-        .post(`api/issues/${props.id}/upVote/`)
+        .post(`/api/issues/${props.id}/upVote/`)
         .then((res) => {
             console.log(res)
         })
@@ -48,7 +48,7 @@ function Issue(props) {
     };
     const handleClickDown = (e) => {
         axios
-        .post(`api/issues/${props.id}/downVote/`)
+        .post(`/api/issues/${props.id}/downVote/`)
         .then((res) => {
             console.log(res)
         })
@@ -61,7 +61,7 @@ function Issue(props) {
     const handleClickComment = (e)=> {
         axios({
             method: "post",
-            url: `api/issues/${props.issue_id}/comments/new`,
+            url: `/api/issues/${props.issue_id}/comments/new`,
             data: {message: message, user_id: userId},
             headers: {
               "Access-Control-Allow-Origin": "*",

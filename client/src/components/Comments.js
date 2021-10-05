@@ -8,7 +8,7 @@ function Comments(props) {
 
     useEffect(()=>{
         axios
-        .get(`api/issues/${props.issue_id}/comments`)
+        .get(`/api/issues/${props.issue_id}/comments`)
         .then((res) => {
             console.log(res)
             setData(res.data)
