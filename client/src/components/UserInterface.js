@@ -1,10 +1,20 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
+// import axios from "axios";
 import "./CSS/UserInterface.css";
 import Title from "./Title";
 import Button from "./Button";
 import Comments from "./Comments";
 
 function UserInterface() {
+
+    // useEffect(()=>{
+    //     axios.get("URL")
+    //     .then((res)=>{
+
+    //     })
+
+    // },[])
+
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

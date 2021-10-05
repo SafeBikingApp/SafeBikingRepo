@@ -17,11 +17,12 @@
 }
 
 .footer-pod, .footer-pod a:link, .footer-pod a:visited, .footer-pod a:active {
+    display: flex;
+    justify-content: center;
     padding: 3px;
     margin: 0 10px 0 10px;
     filter: drop-shadow(2px 2px 1px orange);
     color: #3E2195;
-    width: 200px;
 }
 
 .footer-section {
