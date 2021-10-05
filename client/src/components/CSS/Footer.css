@@ -3,10 +3,10 @@
 .footer-wrapper {
     display: flex;
     flex-direction: column;
-    position: fixed;
     width: 100%;
     bottom: 0;
     border-top: solid 1px #3E2195;
+    height: 11vh;
 }
 
 .footer-madeby, .footer-madeby a:link, .footer-madeby a:visited, .footer-madeby a:active {

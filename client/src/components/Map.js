@@ -33,7 +33,7 @@ const Map = (props) => {
   ];
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "80vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{
           key: process.env.REACT_APP_API_KEY,

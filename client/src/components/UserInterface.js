@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from "react";
-// import axios from "axios";
+import axios from "axios";
 import "./CSS/UserInterface.css";
 import Title from "./Title";
 import Button from "./Button";
@@ -7,15 +7,18 @@ import Comments from "./Comments";
 
 function UserInterface() {
 
-    // useEffect(()=>{
-    //     axios.get("URL")
-    //     .then((res)=>{
+    useEffect(()=>{
+        axios.get("/api/issues")
+        .then((res)=>{
+            console.log(res.data)
+            setData(res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    },[])
 
-    //     })
-
-    // },[])
-
-
+    const [data, setData] = useState([]);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
