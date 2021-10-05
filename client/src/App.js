@@ -9,6 +9,10 @@ import UserInterface from "./components/UserInterface";
 import UserLogin from "./components/UserLogin";
 import UserRegister from "./components/UserRegister";
 import Footer from "./components/Footer";
+import Votes from "./components/Votes";
+import CardIssue from "./components/CardIssue";
+import CardReportIssue from "./components/CardReportIssue";
+import Comments from "./components/Comments";
 
 function App() {
   return (
@@ -17,10 +21,10 @@ function App() {
             <div>
               <Header />
                 <Switch>
-                    <Route exact path="/user_interface" component={Map}/>
+                    <Route exact path="/" component={Map}/>
                     <Route exact path="/issue" component={Issue} />
                     <Route exact path="/report_issue" component={ReportIssue} />
-                    <Route exact path="/" component={UserInterface} />
+                    <Route exact path="/user_interface" component={UserInterface} />
                     <Route exact path="/user_login" component={UserLogin} />
                     <Route exact path="/user_register" component={UserRegister} />
                 </Switch>

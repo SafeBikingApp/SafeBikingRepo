@@ -11,7 +11,7 @@ function UserLogin() {
 
     return (
         <div className="userlogin-wrapper">
-            <Title title="User LogIn" />
+            <Title title="User Log In" />
             <div className="userlogin-container light-color-bg dark-color-text">
                 Username:
                 <input className="userlogin-input" type="text" />

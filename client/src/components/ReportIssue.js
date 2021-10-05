@@ -9,10 +9,10 @@ function ReportIssue() {
         setIssue(e.target.value)
     };
     const handleClickPhoto = (e) => {
-        
+        "upload img to db with user_id"
     };
     const handleClickReport = (e) => {
-
+        "post values to db"
     };
     const [issue, setIssue] = useState("")
     const [agree, setAgree] = useState(false);
@@ -23,9 +23,6 @@ function ReportIssue() {
         <div className="reportissue-wrapper">
             <Title title="Report Issue" />
             <div className="reportissue-section-container">
-                <div className="reportissue-title dark-color-text">
-                    Issue:
-                </div>
                 <div className="reportissue-detail">
                     <Button component="" handleClick={handleClick} name="OBSTRUCTION" />
                     <Button component="" handleClick={handleClick} name="POTHOLE" />
@@ -35,18 +32,18 @@ function ReportIssue() {
                     <Button component="" handleClick={handleClick} name="TRAFFIC DANGER" />
                 </div>
             </div>
-            <div className="reportissue-section-container dark-color-text">
-                <div className="reportissue-title dark-color-text">
-                    Description:
-                </div>
-                <div className="reportissue-detail reportissue-left-input">
-                    <textarea className="reportissue-input" rows="3"/>
-                </div>
+            <div className="reportissue-title dark-color-bg">
+                Description:
             </div>
             <div className="reportissue-section-container">
-                <div className="reportissue-title dark-color-text">
-                    Photo:
+                <div className="reportissue-detail reportissue-left-input">
+                    <textarea className="reportissue-input" rows="3" placeholder="Specify the nature of the issue." />
                 </div>
+            </div>
+            <div className="reportissue-title dark-color-bg">
+                Photo:
+            </div>
+            <div className="reportissue-section-container">
                 <div className="reportissue-detail reportissue-left-input">
                     <input className="reportissue-input" placeholder="optional" type="text" />
                     &nbsp;&nbsp;&nbsp;
@@ -61,6 +58,7 @@ function ReportIssue() {
                 <div className="reportissue-detail dark-color-text reportissue-left">
                     <input type="checkbox" className="reportissue-checkbox" onClick={setAgree} />I agree to the terms of service.
                 </div>
+                <hr />
                 <div className="reportissue-center">
                     <Button name="REPORT" component="" handleClick={handleClickReport} />
                 </div>

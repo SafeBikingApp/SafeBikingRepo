@@ -13,14 +13,14 @@ function UserRegister() {
         <div className="userregister-wrapper">
             <Title title="Register User" />
             <div className="userregister-container dark-color-text light-color-bg">
-                Username: 
-                <input className="userregister-input" type="text" />
-                Password: 
-                <input className="userregister-input" type="text" />
-                &nbsp;&nbsp;Email: &nbsp;&nbsp;
+                Username:<br />
+                <input className="userregister-input" type="text" /><br />
+                Password:<br />
+                <input className="userregister-input" type="text" /><br />
+                Email:<br />
                 <input className="userregister-input" type="text" />
                 <div className="userregister-button">
-                    <Button name="REGISTER" handleClick={handleClick} component="" />
+                    <Button name="REGISTER" handleClick={handleClick} />
                 </div>
             </div>
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
+
 .reportissue-section-container {
     display: flex;
     flex-direction: column;
@@ -8,8 +10,12 @@
 }
 
 .reportissue-title {
+    border-radius: 0px 0px 5px 5px;
     padding: 5px;
+    margin: 0 0 10px 0;
     text-align: left;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .reportissue-detail {
@@ -39,6 +45,7 @@
     border: solid 1px rgba(0, 0, 0, 0.308);
     padding: 5px;
     margin: 0 0 5px 0;
+    color: rgba(0, 0, 0, 0.685);
 }
 
 .reportissue-left-input {
@@ -56,6 +63,17 @@
 
 .reportissue-left {
     text-align: left;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 10px 0;
     width: 73%;
+}
+
+hr {
+    border: solid 1px #3E2195;
+    width: 100%;
+}
+
+@media screen and (min-width: 560px) {
+.reportissue-left {
+    width: 50%;
+}
 }

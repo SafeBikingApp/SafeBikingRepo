@@ -1,17 +1,24 @@
 .App {
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  height: 100vh;
 }
 
 * {
   text-decoration: none;
 }
 
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
 .light-color-bg { 
-  background-color: #DBD3F3;
+  background-color: #dcd1ff;
 }
 
 .light-color-text { 
-  color: #DBD3F3;
+  color: #dcd1ff;
 }
 
 .dark-color-bg { 
@@ -20,4 +27,17 @@
 
 .dark-color-text { 
   color: #3E2195;
+}
+
+@media screen and (min-width: 560px) {
+.App {
+  width: 550px;
+  margin: auto;
+  border-left: solid 1px #3E2195;
+  border-right: solid 1px #3E2195;
+}
+
+body {
+  background-color: orange;
+}
 }
