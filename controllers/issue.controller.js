@@ -20,7 +20,7 @@ const createNew = async (req, res) => {
     res.status(200).json({ message: " Issue created succesfully" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Sorry somthing went wrong" });
+    res.json({ message: "Sorry somthing went wrong" });
   }
 };
 
@@ -31,7 +31,7 @@ const findAll = async (req, res) => {
     res.status(200).json(allIssues);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Sorry something went wrong" });
+    res.json({ message: "Sorry something went wrong" });
   }
 };
 
@@ -63,7 +63,7 @@ const allComments = async (req, res) => {
     if (error === "ISSUE_NOT_FOUND") {
       res.status(403).json({ message: "Sorry we couldn't find this issue" });
     } else {
-      res.status(500).json({ message: "Sorry something went wrong" });
+      res.json({ message: "Sorry something went wrong" });
     }
   }
 };
@@ -98,9 +98,9 @@ const newComment = async (req, res) => {
   } catch (error) {
     console.log(error);
     if (error === "ISSUE_NOT_FOUND") {
-      res.status(403).json({ message: "Sorry we couldn't find this issue" });
+      res.json({ message: "Sorry we couldn't find this issue" });
     } else {
-      res.status(500).json({ message: "Sorry something went wrong" });
+      res.json({ message: "Sorry something went wrong" });
     }
   }
 };
@@ -149,13 +149,11 @@ const vote = async (req, res) => {
   } catch (error) {
     console.log(error);
     if (error === "ISSUE_ALREADY_UPVOTED") {
-      res.status(403).json({ message: "User has already upvoted this issue" });
+      res.json({ message: "User has already upvoted this issue" });
     } else if (error === "ISSUE_ALREADY_DOWNVOTED") {
-      res
-        .status(403)
-        .json({ message: "User has already downvoted this issue" });
+      res.json({ message: "User has already downvoted this issue" });
     } else {
-      res.status(500).json({ message: "Sorry something went wrong" });
+      res.json({ message: "Sorry something went wrong" });
     }
   }
 };
