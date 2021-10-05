@@ -16,3 +16,5 @@ function UserStatus(props) {
 };
 
 export default UserStatus;
+
+/* ? sends loggedin user_id props */

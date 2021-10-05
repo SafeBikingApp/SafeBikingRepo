@@ -5,25 +5,25 @@ import Comments from "./Comments";
 import Votes from "./Votes";
 import Button from "./Button";
 
-function Issue() {
+function Issue(props) {
 
     useEffect(()=>{
         axios.get("/api/issues")
         .then((res)=>{
             console.log(res.data)
-            setData(res.data)
+            setData1(res.data)
         })
         .catch((err)=>{
             console.log(err)
         })
     },[])
 
-    const [creator, setCreator] = useState(true);
-    const [data, setData] = useState([]);
+    const [creator, setCreator] = useState(false);
+    const [data1, setData1] = useState([]);
     const [info, setInfo] = useState([]);
-    const [issueId, setIssueId] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [message, setMessage] = useState("");
 
     const handleClickPhoto = ()=> {
         "upload image to db with user_id"
@@ -36,15 +36,50 @@ function Issue() {
     };
 
 
+    const handleClickUp = (e) => {
+        axios
+        .post(`api/issues/${props.id}/upVote/`)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    };
+    const handleClickDown = (e) => {
+        axios
+        .post(`api/issues/${props.id}/downVote/`)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    };
     
-    const handleClickComment = ()=> {
-        "delete values from db"
+    const [userId, setUserId] = useState(props.user_id);
+    const handleClickComment = (e)=> {
+        axios({
+            method: "post",
+            url: `api/issues/${props.issue_id}/comments/new`,
+            data: {message: message, user_id: userId},
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-type": "application/json",
+            },
+          })
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        });
     };
 
     return (
         <div className="issue-wrapper">
-            {data
-            .filter((field)=> field._id === issueId)
+            {data1
+            .filter((field)=> field._id === props.issue_id)
             .map((info)=>{
                 setInfo(info)
                 return (
@@ -64,15 +99,19 @@ function Issue() {
                     </div>
                 )
             })}
+
+{/* COMMENTS COMPONENT */}
             <div className="issue-section">
                 <div className="issue-title dark-color-bg">
                     Comments
                 </div>
-                <div className="issue-section-container"><Comments id={info._id} /></div>
+                <div className="issue-section-container"><Comments issue_id={info._id} /></div>
                 <div className="issue-detail issue-detail2">
-                    <input className="issue-input issue-input2" type="text" /><Button handleClick={handleClickComment} name="COMMENT" component="" />
+                    <input className="issue-input issue-input2" type="text" value={setMessage((e)=>e.target.value)} /><Button handleClick={handleClickComment} name="COMMENT" />
                 </div>
             </div>
+
+
 {/* USER MODIFICATION */}
             <div className={creator ? "issue-section issue-modify-show" : "issue-section issue-modify-hide"}>
                 <div className="issue-title dark-color-bg">
@@ -91,11 +130,15 @@ function Issue() {
                     </div>
                 </div>
             </div>
+
+{/* VOTES COMPONENT */}
             <div className="issue-section dark-color-bg issue-votes">
-                <Votes color={true} upvotes={info.upVotes} downvotes={info.downVotes} />
+                <Votes color={true} handleClickDown={handleClickDown} handleClickUp={handleClickUp} />
             </div>
         </div>
     )
 };
 
 export default Issue;
+
+/* cardissue sends user_id props */
