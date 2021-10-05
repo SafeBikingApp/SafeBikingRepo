@@ -5,6 +5,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const passportMiddleware = require("./middleware/passport");
+const path = require("path");
 
 const app = express();
 
@@ -14,6 +15,8 @@ const port = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, "build")));
 
 mongoose
   .connect(
@@ -38,6 +41,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 routesSetUp(app);
+
+app.use((req, res) =>
+  res.sendFile(path.join(__dirname, "build", "index.html"))
+);
 
 app.listen(port, () => {
   console.log(`Server running in port ${port}`);
