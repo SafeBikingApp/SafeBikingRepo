@@ -24,8 +24,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <Header />
-          <UploadImage />
+          {/* <UploadImage /> */}
           <Context.Provider
             value={{
               isLogged,
@@ -35,6 +34,7 @@ function App() {
               issueList,
               setIssueList,
             }}>
+            <Header />
             <Switch>
               <Route exact path="/" component={Map} />
               <Route exact path="/issue/upload" component={UploadImage} />

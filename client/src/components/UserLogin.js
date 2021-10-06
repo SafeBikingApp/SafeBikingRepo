@@ -5,8 +5,10 @@ import Button from "./Button";
 import axios from "axios";
 import "./CSS/Button.css";
 import Context from "../contexts/ContextApi";
+import { useHistory } from "react-router-dom";
 
 function UserLogin() {
+  let history = useHistory();
   const { setIsLogged, isLogged, setUserInfo, userInfo } = useContext(Context);
   console.log(isLogged, userInfo);
 
@@ -41,6 +43,7 @@ function UserLogin() {
 
         if (response.data.email) {
           setIsLogged(true);
+          history.push("/");
           setUserInfo(response.data);
           setMessage({ info: "Succesfully logged in", state: true });
         } else {
