@@ -108,15 +108,6 @@ const Map = (props) => {
             <Marker
               key={cluster.properties.issueId}
               lat={latitude}
-<<<<<<< HEAD
-              lng={longitude}
-            >
-              <button className={cluster.properties.voteUp > cluster.properties.voteDown ? 'issue-marker-more-up':'issue-marker-more-down'} >
-                <img src='./img/logo.png' alt='issue'/>
-              </button>
-              {/* <CardIssue issue_id={cluster.properties.issueId} title={cluster.properties.category}>
-              // </CardIssue> */}
-=======
               lng={longitude}>
               {showicon ? (
                 <button
@@ -134,7 +125,6 @@ const Map = (props) => {
                   title={cluster.properties.category}
                   setShowIcon={setShowIcon}></CardIssue>
               )}
->>>>>>> 95332838f2bb2d154cd2e73cdf3983f741cd0251
             </Marker>
           );
         })}

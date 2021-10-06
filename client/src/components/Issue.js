@@ -25,15 +25,15 @@ function Issue(props) {
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleClickPhoto = () => {
-    "upload image to db with user_id";
-  };
-  const handleClickModify = () => {
-    "put values to db";
-  };
-  const handleClickDelete = () => {
-    "delete values from db";
-  };
+  // const handleClickPhoto = () => {
+  //   "upload image to db with user_id";
+  // };
+  // const handleClickModify = () => {
+  //   "put values to db";
+  // };
+  // const handleClickDelete = () => {
+  //   "delete values from db";
+  // };
 
   const handleClickUp = (e) => {
     axios
@@ -108,7 +108,7 @@ function Issue(props) {
           );
         })}
 
-      {/* COMMENTS COMPONENT */}
+{/* COMMENTS COMPONENT */}
       <div className="issue-section">
         <div className="issue-title dark-color-bg">Comments</div>
         <div className="issue-section-container">
@@ -124,8 +124,8 @@ function Issue(props) {
         </div>
       </div>
 
-      {/* USER MODIFICATION */}
-      <div
+{/* USER MODIFICATION */}
+      {/* <div
         className={
           creator
             ? "issue-section issue-modify-show"
@@ -155,9 +155,9 @@ function Issue(props) {
             <Button name="DELETE" handleClick={handleClickDelete} />
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* VOTES COMPONENT */}
+{/* VOTES COMPONENT */}
       <div className="issue-section dark-color-bg issue-votes">
         <Votes
           color={true}

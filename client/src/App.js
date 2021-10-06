@@ -22,6 +22,7 @@ function App() {
   const [issueList, setIssueList] = useState([]);
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
+  const [issueId, setIssueId] = useState("");
 
   return (
     <div className="App">
@@ -30,7 +31,6 @@ function App() {
           {/* <UploadImage /> */}
           <Context.Provider
             value={{
-<<<<<<< HEAD
               isLogged: isLogged, setIsLogged: setIsLogged,
               userInfo: userInfo, setUserInfo: setUserInfo,
               issueList: issueList, setIssueList: setIssueList,
@@ -38,16 +38,6 @@ function App() {
               long: long, setLong: setLong,
             }}>
           <Header />
-=======
-              isLogged,
-              setIsLogged,
-              userInfo,
-              setUserInfo,
-              issueList,
-              setIssueList,
-            }}>
-            <Header />
->>>>>>> 95332838f2bb2d154cd2e73cdf3983f741cd0251
             <Switch>
               <Route exact path="/" component={Map} />
               <Route exact path="/issue/upload" component={UploadImage} />

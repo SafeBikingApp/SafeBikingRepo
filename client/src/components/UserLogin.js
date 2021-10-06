@@ -8,12 +8,7 @@ import Context from "../contexts/ContextApi";
 import { useHistory } from "react-router-dom";
 
 function UserLogin() {
-<<<<<<< HEAD
   const { isLogged, setIsLogged, setUserInfo, userInfo } = useContext(Context);
-=======
-  let history = useHistory();
-  const { setIsLogged, isLogged, setUserInfo, userInfo } = useContext(Context);
->>>>>>> 95332838f2bb2d154cd2e73cdf3983f741cd0251
   console.log(isLogged, userInfo);
 
   const [loginInfo, setLoginInfo] = useState({
@@ -34,6 +29,8 @@ function UserLogin() {
   const [swapChoice, setSwapChoice] = useState(false);
   const handleChoice =()=> !swapChoice ? setSwapChoice(true) : setSwapChoice(false);
 
+  let history = useHistory()
+
   const handleClickLogin = () => {
     console.log(loginInfo);
     axios({
@@ -51,7 +48,7 @@ function UserLogin() {
 
         if (response.data.email) {
           setIsLogged(true);
-          history.push("/");
+          setTimeout(() => history.push("/"), 2000);
           setUserInfo(response.data);
           setMessage({ info: "Succesfully logged in", state: true });
         } else {

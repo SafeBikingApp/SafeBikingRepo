@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import "./CSS/Votes.css";
 import axios from "axios";
+import Context from "../contexts/ContextApi";
 import {ReactComponent as Up} from "./thumbs-up.svg";
 import {ReactComponent as Down} from "./thumbs-down.svg";
 
 function Votes(props) {
 
+    const { issueId, setIssueId } = useContext(Context);
     const [textColor, setTextColor] = useState(false);
     const [data, setData] = useState([]);
 
     useEffect(()=>{
         axios
-        .get(`api/issues/${props.issue_id}`)
+        .get(`api/issues/${issueId}`)
         .then((res) => {
             console.log(res)
             setData(res.data)
@@ -34,4 +36,3 @@ function Votes(props) {
 };
 
 export default Votes;
-/* cardissue and issue send issue_id props */

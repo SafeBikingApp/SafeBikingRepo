@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import axios from "axios";
+import Context from "../contexts/ContextApi";
 import "./CSS/Comments.css";
 
-function Comments(props) {
-    
+function Comments() {
+       
+    const { issueId, setIssueId } = useContext(Context);
     const [data, setData] = useState([])
 
     useEffect(()=>{
         axios
-        .get(`/api/issues/${props.issue_id}/comments`)
+        .get(`/api/issues/${issueId}/comments`)
         .then((res) => {
             console.log(res)
             setData(res.data)
@@ -32,5 +34,3 @@ function Comments(props) {
 };
 
 export default Comments;
-
-/* issue sends props issue_id */

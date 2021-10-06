@@ -18,7 +18,7 @@ function ReportIssue() {
         axios({
         method: "post",
         url: 'api/issues/create',
-        data: {coordinates: {lat: lat, long: long}, type: issue, user_id: userInfo._id},
+        data: {coordinates: {lat: lat, long: long}, type: issue, user_id: userInfo._id, upVotes: userInfo._id},
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-type": "application/json",
@@ -56,6 +56,8 @@ function ReportIssue() {
                     <textarea className="reportissue-input" rows="3" placeholder="Specify the nature of the issue." onChange={(e) => setDescription(e.target.value)} />
                 </div>
             </div>
+
+{/* PHOTO UPLOAD */}
             <div className="reportissue-title dark-color-bg">
                 Photo:
             </div>
@@ -71,6 +73,8 @@ function ReportIssue() {
                 <div className="reportissue-detail reportissue-small dark-color-text">
                     Photo preview
                 </div>
+{/* PHOTO UPLOAD */}
+
                 <div className="reportissue-detail dark-color-text reportissue-left">
                     <input type="checkbox" className="reportissue-checkbox" onClick={setAgree} />I agree to the terms of service.
                 </div>

@@ -1,4 +1,5 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useContext} from "react";
+import { useHistory } from "react-router-dom";
 import Context from "../contexts/ContextApi";
 import axios from "axios";
 import "./CSS/UserInterface.css";
@@ -12,6 +13,7 @@ function UserInterface() {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    let history = useHistory();
 
     const handleClickUpdate = (e) => {
         axios({
@@ -36,6 +38,7 @@ function UserInterface() {
         .then((res)=>{
             setIsLogged(false);
             setMessage("Logout successful");
+            setTimeout(() => history.push("/"), 3000);
             console.log(res)
         })
         .catch((err)=>{
@@ -48,14 +51,11 @@ function UserInterface() {
             console.log(res)
             setIsLogged(false)
             setMessage("Account deletion successful");
+            setTimeout(() => history.push("/"), 3000);
         })
         .catch((err)=>{
             console.log(err)
         })
-    };
-
-    const redirectMap = ()=>{
-
     };
 
     return (
