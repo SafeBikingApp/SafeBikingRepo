@@ -8,12 +8,14 @@ import GoogleMapReact from "google-map-react";
 import CardIssue from "./CardIssue";
 
 
-const { long, setLong, lat, setLat, issueId, setIssueId } = useContext(Context);
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 const Marker = ({ children }) => children;
 
 const Map = (props) => {
+  
+  const { long, setLong, lat, setLat, issueId, setIssueId } = useContext(Context);
+  
   // 1) map setup
   const mapRef = useRef();
   const [zoom, setZoom] = useState(13);
