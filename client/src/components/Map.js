@@ -123,6 +123,8 @@ const Map = (props) => {
                 <CardIssue
                   issue_id={cluster.properties.issueId}
                   title={cluster.properties.category}
+                  voteUp={cluster.properties.voteUp}
+                  voteDown={cluster.properties.voteDown}
                   setShowIcon={setShowIcon}></CardIssue>
               )}
             </Marker>

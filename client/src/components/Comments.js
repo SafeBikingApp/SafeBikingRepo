@@ -20,17 +20,15 @@ function Comments() {
         });
     },[]);
 
-    return (
-        <div className="comments-wrapper dark-color-text">
-            <ul>
-            {data.map((comment)=> {
-                return(
-                    <li key={comment._id}>{comment}</li>
-                )
-            })}
-            </ul>
-        </div>
-    )
-};
+  return (
+    <div className="comments-wrapper dark-color-text">
+      <ul>
+        {data.map((comment) => {
+          return <li key={comment._id}>{comment}</li>;
+        })}
+      </ul>
+    </div>
+  );
+}
 
 export default Comments;

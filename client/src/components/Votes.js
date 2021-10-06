@@ -6,10 +6,9 @@ import {ReactComponent as Up} from "./thumbs-up.svg";
 import {ReactComponent as Down} from "./thumbs-down.svg";
 
 function Votes(props) {
-
-    const { issueId, setIssueId } = useContext(Context);
-    const [textColor, setTextColor] = useState(false);
-    const [data, setData] = useState([]);
+  const [textColor, setTextColor] = useState(false);
+  const [data, setData] = useState([]);
+  const { issueId, setIssueId } = useContext(Context);
 
     useEffect(()=>{
         axios

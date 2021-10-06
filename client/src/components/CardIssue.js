@@ -26,5 +26,3 @@ function CardIssue(props) {
 }
 
 export default CardIssue;
-
-/* map sends issue_id props */
