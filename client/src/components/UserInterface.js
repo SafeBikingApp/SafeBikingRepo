@@ -38,7 +38,7 @@ function UserInterface() {
         .then((res)=>{
             setIsLogged(false);
             setMessage("Logout successful");
-            setTimeout(() => history.push("/"), 3000);
+            setTimeout(() => history.push("/"), 2000);
             console.log(res)
         })
         .catch((err)=>{
@@ -51,7 +51,7 @@ function UserInterface() {
             console.log(res)
             setIsLogged(false)
             setMessage("Account deletion successful");
-            setTimeout(() => history.push("/"), 3000);
+            setTimeout(() => history.push("/"), 2000);
         })
         .catch((err)=>{
             console.log(err)
