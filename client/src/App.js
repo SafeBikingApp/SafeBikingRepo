@@ -38,7 +38,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Map} />
               <Route exact path="/issue/upload" component={UploadImage} />
-              <Route exact path="/issue/:id" component={Issue} />
+              <Route exact path="/issue/:issue_id" component={Issue} />
               <Route exact path="/report_issue" component={ReportIssue} />
               <Route
                 exact

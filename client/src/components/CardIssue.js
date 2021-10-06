@@ -14,9 +14,7 @@ function CardIssue(props) {
         <Votes color={false} issue_id={props.issue_id} />
       </div>
       <div className="cardissue-footer dark-color-bg">
-        <Link to={`/issue/${props.issue_id}`} issue_id={props.issue_id}>
-          More info
-        </Link>
+        <Link to={`/issue/${props.issue_id}`}>More info</Link>
       </div>
     </div>
   );
