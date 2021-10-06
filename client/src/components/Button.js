@@ -5,7 +5,7 @@ function Button(props) {
 
     return (
         <div className="button-wrapper">
-            <button className="button dark-color-bg" onClick={props.handleClick} value={props.value}>{props.name}</button>
+            <button className="button dark-color-bg" onClick={props.handleClick} id={props.id} value={props.name}>{props.name}</button>
         </div>
     )
 };

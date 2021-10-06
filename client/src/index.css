@@ -5,13 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-    background-color: orange;
-    background-size: cover;
-    background-image:url(https://pixabay.com/get/g20154394e4bc599544e1e686dafd779d0f9fa6eac5578f24fad6b405e02e9fe6c10ce89d57c4e171280e1a61f29cb5e0.jpg);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+@media screen and (min-width: 560px) {
+body {
+  background-color: orange;
+  background-size: cover;
+  background-image:url(https://pixabay.com/get/g20154394e4bc599544e1e686dafd779d0f9fa6eac5578f24fad6b405e02e9fe6c10ce89d57c4e171280e1a61f29cb5e0.jpg);
+}
 }

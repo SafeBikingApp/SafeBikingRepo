@@ -5,9 +5,10 @@ import Button from "./Button";
 import axios from "axios";
 import "./CSS/Button.css";
 import Context from "../contexts/ContextApi";
+import { useHistory } from "react-router-dom";
 
 function UserLogin() {
-  const { setIsLogged, isLogged, setUserInfo, userInfo } = useContext(Context);
+  const { isLogged, setIsLogged, setUserInfo, userInfo } = useContext(Context);
   console.log(isLogged, userInfo);
 
   const [loginInfo, setLoginInfo] = useState({
@@ -25,6 +26,11 @@ function UserLogin() {
     state: false,
   });
 
+  const [swapChoice, setSwapChoice] = useState(false);
+  const handleChoice =()=> !swapChoice ? setSwapChoice(true) : setSwapChoice(false);
+
+  let history = useHistory()
+
   const handleClickLogin = () => {
     console.log(loginInfo);
     axios({
@@ -38,9 +44,11 @@ function UserLogin() {
     })
       .then((response) => {
         console.log(response);
+        setIsLogged(true)
 
         if (response.data.email) {
           setIsLogged(true);
+          setTimeout(() => history.push("/"), 2000);
           setUserInfo(response.data);
           setMessage({ info: "Succesfully logged in", state: true });
         } else {
@@ -94,7 +102,14 @@ function UserLogin() {
   return (
     <div className="userlogin-wrapper">
       <Title title="User Log-in / Register" />
-      <div className="userlogin-container light-color-bg dark-color-text">
+
+      <div className="userlogin-choice">
+        <span onClick={handleChoice} className={swapChoice ? "dark-color-text userlogin-detail" : "userlogin-inactive"}>LOG IN</span>
+        <span className="userlogin-space dark-color-bg"></span>
+        <span onClick={handleChoice} className={!swapChoice ? "dark-color-text userlogin-detail" : "userlogin-inactive"}>REGISTER</span>
+      </div>
+
+      <div className={swapChoice ? "userregister-hide" : "userlogin-container dark-color-text light-color-bg"}>
         <h2>Log in</h2>
         Email:
         <input
@@ -123,8 +138,8 @@ function UserLogin() {
           </button>
         </div>
       </div>
-      <div>{message.state && message.info}</div>
-      <div className="userlogin-container dark-color-text light-color-bg">
+
+      <div className={swapChoice ? "userlogin-container dark-color-text light-color-bg" : "userregister-hide"}>
         <h2>Register</h2>
         Username:
         <br />
@@ -165,6 +180,7 @@ function UserLogin() {
           </button>
         </div>
       </div>
+      <div className="dark-color-text">{message.state && message.info}</div>
     </div>
   );
 }

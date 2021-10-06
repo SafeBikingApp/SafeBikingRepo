@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./CSS/Issue.css";
 import axios from "axios";
 import Comments from "./Comments";
 import Votes from "./Votes";
 import Button from "./Button";
+import Context from "../contexts/ContextApi";
 
-function Issue(props) {
+function Issue({ match }) {
+  const { userInfo } = useContext(Context);
+
+  const { issue_id } = match.params;
   useEffect(() => {
     axios
-      .get("/api/issues/615c9b8277f6d3c42f44cbe6")
+      .get(`/api/issues/${issue_id}`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setData1(res.data);
       })
       .catch((err) => {
@@ -25,19 +29,19 @@ function Issue(props) {
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleClickPhoto = () => {
-    "upload image to db with user_id";
-  };
-  const handleClickModify = () => {
-    "put values to db";
-  };
-  const handleClickDelete = () => {
-    "delete values from db";
-  };
+  // const handleClickPhoto = () => {
+  //   "upload image to db with user_id";
+  // };
+  // const handleClickModify = () => {
+  //   "put values to db";
+  // };
+  // const handleClickDelete = () => {
+  //   "delete values from db";
+  // };
 
   const handleClickUp = (e) => {
     axios
-      .post(`/api/issues/${props.id}/upVote/`)
+      .post(`/api/issues/${issue_id}/vote/upVote`)
       .then((res) => {
         console.log(res);
       })
@@ -47,7 +51,7 @@ function Issue(props) {
   };
   const handleClickDown = (e) => {
     axios
-      .post(`/api/issues/${props.id}/downVote/`)
+      .post(`/api/issues/${issue_id}/vote/downVote`)
       .then((res) => {
         console.log(res);
       })
@@ -56,11 +60,11 @@ function Issue(props) {
       });
   };
 
-  const [userId, setUserId] = useState(props.user_id);
+  const [userId, setUserId] = useState(userInfo.id);
   const handleClickComment = (e) => {
     axios({
       method: "post",
-      url: `/api/issues/${props.issue_id}/comments/new`,
+      url: `/api/issues/${issue_id}/comments/new`,
       data: { message: message, user_id: userId },
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -74,45 +78,44 @@ function Issue(props) {
         console.log(err);
       });
   };
-
+  console.log(data1, "data1");
   return (
     <div className="issue-wrapper">
-      {data1
-        .filter((field) => field._id === props.issue_id)
-        .map((info) => {
-          setInfo(info);
-          return (
-            <div className="issue-section">
-              <div className="issue-title dark-color-bg">{info.type}</div>
-              <div className="issue-section-container dark-color-text">
-                {info.description}
-              </div>
-              <div className="issue-section-container">
-                <span
-                  className={
-                    info.pictures
-                      ? "issue-section issue-center issue-modify-show"
-                      : "issue-section issue-modify-hide"
-                  }>
-                  <img
+      {data1 && (
+        // .filter((field) => field._id === issue_id)
+        // .map((info) => {
+        //   setInfo(info);
+        //   return (
+        <div className="issue-section">
+          <div className="issue-title dark-color-bg">{data1.type}</div>
+          <div className="issue-section-container dark-color-text">
+            {/* {data.description} */}
+          </div>
+          <div className="issue-section-container">
+            {/* <span
+              className={
+                data.pictures
+                  ? "issue-section issue-center issue-modify-show"
+                  : "issue-section issue-modify-hide"
+              }> */}
+            {/* <img
                     className="issue-img light-color-bg"
                     src={`${info.pictures}`}
                     alt={info.type}
-                  />
-                </span>
-                <span className="issue-center dark-color-text">
-                  {info.coordinates}
-                </span>
-              </div>
-            </div>
-          );
-        })}
+                  /> */}
+            {/* </span> */}
+            <span className="issue-center dark-color-text">
+              {/* {data1.coordinates} */}
+            </span>
+          </div>
+        </div>
+      )}
 
-      {/* COMMENTS COMPONENT */}
+{/* COMMENTS COMPONENT */}
       <div className="issue-section">
         <div className="issue-title dark-color-bg">Comments</div>
         <div className="issue-section-container">
-          <Comments issue_id={info._id} />
+          <Comments issue_id={data1 && data1._id} />
         </div>
         <div className="issue-detail issue-detail2">
           <input
@@ -124,8 +127,8 @@ function Issue(props) {
         </div>
       </div>
 
-      {/* USER MODIFICATION */}
-      <div
+{/* USER MODIFICATION */}
+      {/* <div
         className={
           creator
             ? "issue-section issue-modify-show"
@@ -155,9 +158,9 @@ function Issue(props) {
             <Button name="DELETE" handleClick={handleClickDelete} />
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* VOTES COMPONENT */}
+{/* VOTES COMPONENT */}
       <div className="issue-section dark-color-bg issue-votes">
         <Votes
           color={true}
@@ -170,5 +173,3 @@ function Issue(props) {
 }
 
 export default Issue;
-
-/* cardissue sends user_id props */

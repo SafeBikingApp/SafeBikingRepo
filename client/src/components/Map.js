@@ -19,6 +19,7 @@ const Map = (props) => {
   const url = "/api/issues";
   const { data, error } = useSwr(url, fetcher);
   const issues = data && !error ? data : [];
+  const [showicon, setShowIcon] = useState(true);
   const points = issues.map((issue) => ({
     type: "Feature",
     properties: {
@@ -26,7 +27,7 @@ const Map = (props) => {
       issueId: issue._id,
       category: issue.type,
       voteUp: issue.upVotes.length,
-      voteDown: issue.downVotes.length
+      voteDown: issue.downVotes.length,
     },
     geometry: {
       type: "Point",
@@ -74,8 +75,7 @@ const Map = (props) => {
             bounds.se.lng,
             bounds.nw.lat,
           ]);
-        }}
-      >
+        }}>
         {clusters.map((cluster) => {
           const [longitude, latitude] = cluster.geometry.coordinates;
           const { cluster: isCluster, point_count: pointCount } =
@@ -97,8 +97,7 @@ const Map = (props) => {
                     );
                     mapRef.current.setZoom(expansionZoom);
                     mapRef.current.panTo({ lat: latitude, lng: longitude });
-                  }}
-                >
+                  }}>
                   {pointCount}
                 </div>
               </Marker>
@@ -109,13 +108,25 @@ const Map = (props) => {
             <Marker
               key={cluster.properties.issueId}
               lat={latitude}
-              lng={longitude}
-            >
-              <button className={cluster.properties.voteUp > cluster.properties.voteDown ? 'issue-marker-more-up':'issue-marker-more-down'} >
-                <img src='./img/logo.png' alt='issue'/>
-              </button>
-              // {/* <CardIssue issue_id={cluster.properties.issueId} title={cluster.properties.category}>
-              // </CardIssue> */}
+              lng={longitude}>
+              {showicon ? (
+                <button
+                  className={
+                    cluster.properties.voteUp > cluster.properties.voteDown
+                      ? "issue-marker-more-up"
+                      : "issue-marker-more-down"
+                  }
+                  onClick={() => setShowIcon(false)}>
+                  <img src="./img/logo.png" alt="issue" />
+                </button>
+              ) : (
+                <CardIssue
+                  issue_id={cluster.properties.issueId}
+                  title={cluster.properties.category}
+                  voteUp={cluster.properties.voteUp}
+                  voteDown={cluster.properties.voteDown}
+                  setShowIcon={setShowIcon}></CardIssue>
+              )}
             </Marker>
           );
         })}
