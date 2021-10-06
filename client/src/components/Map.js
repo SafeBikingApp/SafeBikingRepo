@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import Context from "../contexts/ContextApi";
 import { Link } from "react-router-dom";
 import useSwr from "swr";
 import useSupercluster from "use-supercluster";
@@ -6,6 +7,8 @@ import "./CSS/Map.css";
 import GoogleMapReact from "google-map-react";
 import CardIssue from "./CardIssue";
 
+
+const { long, setLong, lat, setLat, issueId, setIssueId } = useContext(Context);
 const fetcher = (...args) => fetch(...args).then((response) => response.json());
 
 const Marker = ({ children }) => children;
