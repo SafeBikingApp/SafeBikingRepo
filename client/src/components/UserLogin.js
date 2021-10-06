@@ -7,7 +7,7 @@ import "./CSS/Button.css";
 import Context from "../contexts/ContextApi";
 
 function UserLogin() {
-  const { setIsLogged, isLogged, setUserInfo, userInfo } = useContext(Context);
+  const { isLogged, setIsLogged, setUserInfo, userInfo } = useContext(Context);
   console.log(isLogged, userInfo);
 
   const [loginInfo, setLoginInfo] = useState({
@@ -124,6 +124,9 @@ function UserLogin() {
         </div>
       </div>
       <div>{message.state && message.info}</div>
+
+
+
       <div className="userlogin-container dark-color-text light-color-bg">
         <h2>Register</h2>
         Username:

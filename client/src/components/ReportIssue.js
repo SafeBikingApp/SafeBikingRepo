@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import "./CSS/ReportIssue.css";
 import Title from "./Title";
 import Button from "./Button";
-/* props.long, props.lat */
+import axios from "axios";
+import Context from "../contexts/ContextApi";
 
 
-function ReportIssue(props) {
+function ReportIssue() {
 
     const handleClick = (e) => {
         setIssue(e.target.value)
@@ -14,24 +15,37 @@ function ReportIssue(props) {
         "upload img to db with user_id"
     };
     const handleClickReport = (e) => {
-        "post values to db"
+        axios({
+        method: "post",
+        url: 'api/issues/create',
+        data: {coordinates: {lat: lat, long: long}, type: issue, user_id: userInfo._id},
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-type": "application/json",
+        },
+      })
+        .then((res)=> console.log(res))
+        .catch((err)=> console.log(err))
     };
+    
+    const { setUserInfo, userInfo, lat, setLat, long, setLong } = useContext(Context);
     const [issue, setIssue] = useState("")
     const [agree, setAgree] = useState(false);
     const [photo, setPhoto] = useState(true);
     const [imgUrl, setImgUrl] = useState("");
+    const [description, setDescription] = useState("");
 
     return (
         <div className="reportissue-wrapper">
             <Title title="Report Issue" />
             <div className="reportissue-section-container">
                 <div className="reportissue-detail">
-                    <Button component="" handleClick={handleClick} name="OBSTRUCTION" />
-                    <Button component="" handleClick={handleClick} name="POTHOLE" />
+                    <Button handleClick={handleClick} id="obstruction" name="OBSTRUCTION" />
+                    <Button handleClick={handleClick} id="pothole" name="POTHOLE" />
                 </div>
                 <div className="reportissue-detail">
-                    <Button component="" handleClick={handleClick} name="ACCIDENT" />
-                    <Button component="" handleClick={handleClick} name="TRAFFIC DANGER" />
+                    <Button handleClick={handleClick} id="accident" name="ACCIDENT" />
+                    <Button handleClick={handleClick} id="traffic_danger" name="TRAFFIC DANGER" />
                 </div>
             </div>
             <div className="reportissue-title dark-color-bg">
@@ -39,7 +53,7 @@ function ReportIssue(props) {
             </div>
             <div className="reportissue-section-container">
                 <div className="reportissue-detail reportissue-left-input">
-                    <textarea className="reportissue-input" rows="3" placeholder="Specify the nature of the issue." />
+                    <textarea className="reportissue-input" rows="3" placeholder="Specify the nature of the issue." onChange={(e) => setDescription(e.target.value)} />
                 </div>
             </div>
             <div className="reportissue-title dark-color-bg">

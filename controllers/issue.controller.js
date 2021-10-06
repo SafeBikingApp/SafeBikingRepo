@@ -116,6 +116,7 @@ const vote = async (req, res) => {
     // check if user has already up or down voted this issue
     const alreadyUpVoted = foundIssue.upVotes.includes(user_id);
     const alreadyDownVoted = foundIssue.downVotes.includes(user_id);
+    const issueObsolete = foundIssue.downVotes.length > foundIssue.upVotes.length;
 
     if (vote === "upVote") {
       if (alreadyUpVoted) await Promise.reject("ISSUE_ALREADY_UPVOTED");
@@ -144,6 +145,15 @@ const vote = async (req, res) => {
           $pull: { upVotes: user_id },
         });
       }
+      // if downvote count exceeds upvote count, issue gets deleted
+      if (issueObsolete) await UserModel.findByIdAndDelete(issue_id, function (err, docs) {
+        if (err){
+            console.log(err)
+        }
+        else{
+            console.log("Deleted : ", docs);
+        }
+    });
       res.json({ message: "Downvote succesful" });
     }
   } catch (error) {
