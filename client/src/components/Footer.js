@@ -24,7 +24,7 @@ function Footer() {
                     <a href="https://github.com/sal9110/" target="new"><Github /></a>&nbsp;Salvatore
                 </div>
             </div>
-            <div className="footer-section light-color-bg dark-color-text">© 2021 Habitat</div>
+            <div className="footer-section light-color-bg light-color-text">© 2021 Habitat</div>
         </div>
     )
 };
