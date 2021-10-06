@@ -4,7 +4,7 @@
     height: 83vh;
 }
 .userlogin-container {
-    margin: 30px 50px 30px 50px;
+    margin: 20px 50px 20px 50px;
     padding: 10px 30px 30px 30px;
     border-radius: 20px;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
@@ -26,8 +26,38 @@
     margin: 10px 0 0 0;
 }
 
+.userregister-hide {
+    display: none;
+}
+
+.userlogin-inactive {
+    color: #3e21957e;
+    padding: 0 5px 0 5px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.userlogin-choice {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.userlogin-space {
+    width: 1px;
+}
+
+.userlogin-detail {
+    font-weight: bold;
+    width: 100%;
+    padding: 0 5px 0 5px;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 550px) {
 .userlogin-container {
-    margin: 50px 120px 50px 120px;
+    margin: 20px 120px 20px 120px;
 }
 }

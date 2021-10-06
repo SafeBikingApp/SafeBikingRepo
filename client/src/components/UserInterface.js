@@ -11,6 +11,7 @@ function UserInterface() {
     const { isLogged, setIsLogged, setUserInfo, userInfo } = useContext(Context);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
 
     const handleClickUpdate = (e) => {
         axios({
@@ -24,6 +25,7 @@ function UserInterface() {
           })
         .then((res)=>{
             console.log(res)
+            setMessage("User update successful");
         })
         .catch((err)=>{
             console.log(err)
@@ -32,7 +34,8 @@ function UserInterface() {
     const handleClickLogout = (e) => {
         axios.post('/api/auth/log-out')
         .then((res)=>{
-            setIsLogged(false)
+            setIsLogged(false);
+            setMessage("Logout successful");
             console.log(res)
         })
         .catch((err)=>{
@@ -44,6 +47,7 @@ function UserInterface() {
         .then((res)=>{
             console.log(res)
             setIsLogged(false)
+            setMessage("Account deletion successful");
         })
         .catch((err)=>{
             console.log(err)
@@ -75,6 +79,7 @@ function UserInterface() {
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <Button name="DELETE ACCOUNT" handleClick={handleClickDeleteAccount} />
             </div>
+            <div className="dark-color-text">{message}</div>
 {/* COMMENTS */}
             <div className="userinterface-title dark-color-bg userinterface-noshow">
                  Comments
