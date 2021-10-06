@@ -1,6 +1,8 @@
 const IssueModel = require("../models/IssueModel");
 const UserModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
+const { cloudinary } = require("../utils/cloudinary");
+const { findById } = require("../models/IssueModel");
 
 const createNew = async (req, res) => {
   const { coordinates, user_id, comments, upVotes, downVotes, pictures, type } =
@@ -36,7 +38,7 @@ const findAll = async (req, res) => {
 };
 
 const findIssue = async (req, res, next) => {
-    const { id } = req.params;
+  const { id } = req.params;
   try {
     const foundIssue = await IssueModel.findById({ _id: id });
     if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
@@ -49,7 +51,6 @@ const findIssue = async (req, res, next) => {
       res.json({ message: "Sorry something went wrong" });
     }
   }
-
 };
 
 const allComments = async (req, res) => {
@@ -107,8 +108,8 @@ const newComment = async (req, res) => {
 // vote param upvote || downvote
 const vote = async (req, res) => {
   const { id: issue_id, vote } = req.params;
-  const user_id = req.user._id.toString();
-  console.log(user_id);
+  const user_id = req.user?._id.toString();
+  console.log(user_id, "userID");
   try {
     const foundIssue = await IssueModel.findById(issue_id);
     if (!foundIssue) await Promise.reject("ISSUE_NOT_FOUND");
@@ -168,4 +169,37 @@ const vote = async (req, res) => {
   }
 };
 
-module.exports = { createNew, findAll, findIssue, allComments, newComment, vote };
+const uploadImage = async (req, res) => {
+  const { issue_id } = req.params;
+  console.log("ISSUE-ID", issue_id);
+  try {
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: "safeBiking",
+    });
+    const picture_id = uploadResponse.public_id;
+    console.log(picture_id, "pic ID");
+    if (picture_id) {
+      const uploadPicture = IssueModel.findOne({ _id: issue_id });
+      // .findByIdAndUpdate(issue_id, {
+      //   $push: { pictures: picture_id },
+      // });
+      console.log(uploadPicture);
+    }
+
+    res.json({ message: "Picture uploaded" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ err: "Something went wrong" });
+  }
+};
+
+module.exports = {
+  createNew,
+  findAll,
+  findIssue,
+  allComments,
+  newComment,
+  vote,
+  uploadImage,
+};

@@ -1,4 +1,8 @@
 /node_modules
 .env
+<<<<<<< HEAD
 /build
 /deleted
+=======
+build
+>>>>>>> 95332838f2bb2d154cd2e73cdf3983f741cd0251

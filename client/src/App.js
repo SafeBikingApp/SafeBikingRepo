@@ -30,6 +30,7 @@ function App() {
           {/* <UploadImage /> */}
           <Context.Provider
             value={{
+<<<<<<< HEAD
               isLogged: isLogged, setIsLogged: setIsLogged,
               userInfo: userInfo, setUserInfo: setUserInfo,
               issueList: issueList, setIssueList: setIssueList,
@@ -37,11 +38,26 @@ function App() {
               long: long, setLong: setLong,
             }}>
           <Header />
+=======
+              isLogged,
+              setIsLogged,
+              userInfo,
+              setUserInfo,
+              issueList,
+              setIssueList,
+            }}>
+            <Header />
+>>>>>>> 95332838f2bb2d154cd2e73cdf3983f741cd0251
             <Switch>
               <Route exact path="/" component={Map} />
+              <Route exact path="/issue/upload" component={UploadImage} />
               <Route exact path="/issue/:id" component={Issue} />
               <Route exact path="/report_issue" component={ReportIssue} />
-              <Route exact path="/user_interface/:id" component={UserInterface} />
+              <Route
+                exact
+                path="/user_interface/:id"
+                component={UserInterface}
+              />
               <Route exact path="/user_login" component={UserLogin} />
               <Route exact path="/user_interface/:id">{!isLogged ? <Redirect to="/" /> : <UserInterface />}</Route>
             </Switch>
