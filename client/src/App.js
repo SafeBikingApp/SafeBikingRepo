@@ -18,30 +18,33 @@ import Context from "./contexts/ContextApi";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    id: "",
-  });
+  const [userInfo, setUserInfo] = useState({});
   const [issueList, setIssueList] = useState([]);
   return (
     <div className="App">
       <Router>
         <div>
           <Header />
-          {/* <UploadImage /> */}
+          <UploadImage />
           <Context.Provider
             value={{
-              isLogged: isLogged,
-              setIsLogged: setIsLogged,
-              userInfo: userInfo,
-              setUserInfo: setUserInfo,
-              issueList: issueList,
-              setIssueList: setIssueList,
+              isLogged,
+              setIsLogged,
+              userInfo,
+              setUserInfo,
+              issueList,
+              setIssueList,
             }}>
             <Switch>
               <Route exact path="/" component={Map} />
+              <Route exact path="/issue/upload" component={UploadImage} />
               <Route exact path="/issue/:id" component={Issue} />
               <Route exact path="/report_issue" component={ReportIssue} />
-              <Route exact path="/user_interface/:id" component={UserInterface} />
+              <Route
+                exact
+                path="/user_interface/:id"
+                component={UserInterface}
+              />
               <Route exact path="/user_login" component={UserLogin} />
             </Switch>
           </Context.Provider>

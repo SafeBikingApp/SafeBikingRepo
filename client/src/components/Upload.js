@@ -1,7 +1,8 @@
 import { Image, CloudinaryContext } from "cloudinary-react";
 import { useState } from "react";
+import axios from "axios";
 
-const UploadImage = () => {
+const UploadImage = (props) => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState("");
   const [selectedFile, setSelectedFile] = useState();
@@ -23,6 +24,7 @@ const UploadImage = () => {
   };
 
   const handleSubmitFile = (e) => {
+    console.log("submit");
     e.preventDefault();
     if (!selectedFile) return;
     const reader = new FileReader();
@@ -37,15 +39,20 @@ const UploadImage = () => {
   };
 
   const uploadImage = async (base64EncodedImage) => {
+    console.log("upload");
     try {
-      await fetch("/api/upload", {
-        method: "POST",
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        "/api/issues/upload/615cc1181315b134e3566b89",
+        {
+          method: "POST",
+          body: JSON.stringify({ data: base64EncodedImage }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       setFileInputState("");
       setPreviewSource("");
       setSuccessMsg("Image uploaded successfully");
+      console.log(response);
     } catch (err) {
       console.error(err);
       setErrMsg("Something went wrong!");
